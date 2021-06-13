@@ -20,5 +20,10 @@ colorscheme peachpuff
 set number
 set mouse=a "enable mouse for scrolling and resizing
 set title
+"set background=dark
 highlight Comment ctermfg=green
+
+
+"Set file type for .launch files from ROS to XML
+au BufRead,BufNewFile *.launch set filetype=xml
 
