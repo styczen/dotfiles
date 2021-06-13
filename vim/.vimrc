@@ -1,0 +1,24 @@
+"""Indentation options"""
+set autoindent
+set expandtab
+set shiftwidth=4
+set tabstop=4
+
+"""Search options"""
+set hlsearch
+set incsearch
+set smartcase "automatically switch search to case-sensitive when search query contains an uppercase letter
+
+"""Text rendering options"""
+"syntax enable
+syntax on
+
+"""User interface options"""
+"set laststatus=2 "always display the status bar
+set ruler
+colorscheme peachpuff
+set number
+set mouse=a "enable mouse for scrolling and resizing
+set title
+highlight Comment ctermfg=green
+
