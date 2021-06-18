@@ -26,4 +26,5 @@ highlight Comment ctermfg=green
 
 "Set file type for .launch files from ROS to XML
 au BufRead,BufNewFile *.launch set filetype=xml
+au BufRead,BufNewFile *.world set filetype=xml
 
