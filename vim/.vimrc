@@ -11,6 +11,7 @@ set smartcase "automatically switch search to case-sensitive when search query c
 
 """Text rendering options"""
 "syntax enable
+filetype plugin indent on
 syntax on
 
 """User interface options"""
