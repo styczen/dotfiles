@@ -1,31 +1,39 @@
-"""Indentation options"""
-set autoindent
-set expandtab
-set shiftwidth=4
-set tabstop=4
+" Install vim-plug if not found
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+endif
 
-"""Search options"""
-set hlsearch
-set incsearch
-set smartcase "automatically switch search to case-sensitive when search query contains an uppercase letter
+" Run PlugInstall if there are missing plugins
+autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
+  \| PlugInstall --sync | source $MYVIMRC
+\| endif
 
-"""Text rendering options"""
-"syntax enable
+" Common settings
 filetype plugin indent on
 syntax on
-
-"""User interface options"""
-"set laststatus=2 "always display the status bar
-set ruler
-colorscheme peachpuff
 set number
-set mouse=a "enable mouse for scrolling and resizing
-set title
-"set background=dark
-highlight Comment ctermfg=green
+set hlsearch
+set incsearch
+set ignorecase
+set smartcase
+set expandtab
+set tabstop=4
+set shiftwidth=4
+"set spell
+"set ruler
 
+" Plugins
+call plug#begin('~/.vim/plugged')
+Plug 'rust-lang/rust.vim'
+Plug 'vim-python/python-syntax'
+Plug 'bfrg/vim-cpp-modern'
+call plug#end()
 
-"Set file type for .launch files from ROS to XML
-au BufRead,BufNewFile *.launch set filetype=xml
-au BufRead,BufNewFile *.world set filetype=xml
+" Plug 'rust-lang/rust.vim'
+let g:rustfmt_autosave = 1
+let g:rustfmt_emit_files = 1
+let g:rustfmt_fail_silently = 0
 
+" Plug 'vim-python/python-syntax'
+let g:python_highlight_all = 1
