@@ -2,7 +2,7 @@
 
 set -e
 
-for i in vim tmux; do
+for i in neovim tmux; do
     cd $i && ./setup
     cd -
 done
