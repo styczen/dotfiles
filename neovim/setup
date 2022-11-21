@@ -1,0 +1,9 @@
+#!/bin/sh
+
+if [ -z "$(which nvim)" ]; then
+  echo [ERROR]: Need to install full Neovim.
+  exit 1
+fi
+
+ln -sf "$PWD/nvim" "$HOME/.config/nvim"
+
