@@ -5,5 +5,14 @@ if [ -z "$(which nvim)" ]; then
   exit 1
 fi
 
+# Setup fonts
+FONTS_PATH="$HOME/.local/share/fonts"
+mkdir -p $FONTS_PATH
+wget --quiet https://github.com/ryanoasis/nerd-fonts/releases/download/v2.2.2/3270.zip
+unzip -d $FONTS_PATH -q 3270.zip
+rm 3270.zip
+fc-cache -f
+echo "Please restart terminal"
+
 ln -s "$PWD/nvim" "$HOME/.config/nvim"
 
