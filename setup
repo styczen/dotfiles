@@ -3,7 +3,8 @@
 set -e
 
 for i in neovim tmux; do
+    echo "$PWD/$i"
     cd $i && ./setup
-    cd -
+    cd ..
 done
 
