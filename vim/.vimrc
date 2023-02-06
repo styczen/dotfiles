@@ -13,6 +13,7 @@ autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
 filetype plugin indent on
 syntax on
 set number
+set relativenumber
 set hlsearch
 set incsearch
 set ignorecase
