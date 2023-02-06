@@ -11,7 +11,9 @@ telescope.setup {
     defaults = {
         path_display = { "smart" },
         file_ignore_patterns = {
-            "venv", "__pycache__",
+            "venv",
+            "__pycache__",
+            "node_modules",
         },
         mappings = {
             i = {
