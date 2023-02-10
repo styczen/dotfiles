@@ -77,5 +77,13 @@ keymap("n", "<Leader>f", "<cmd>Telescope find_files<CR>", opts)
 --keymap("n", "<leader>f", "<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({ previewer = false }))<cr>", opts)
 keymap("n", "<C-t>", "<cmd>Telescope live_grep<CR>", opts)
 
+-- This is temporary until I migrate to cleaner version
+local builtin = require('telescope.builtin')
+vim.keymap.set('n', '<C-p>', builtin.git_files, {})
+vim.keymap.set('n', '<leader>ps', function()
+	builtin.grep_string({ search = vim.fn.input("Grep > ") })
+end)
+vim.keymap.set('n', '<leader>vh', builtin.help_tags, {})
+
 -- Close quickfix window (currently used only when displaying references)
 keymap("n", "<Leader>cc", ":cclose<CR>", opts)
