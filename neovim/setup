@@ -8,7 +8,6 @@ fi
 # Install dependencies
 # ripgrep (https://github.com/BurntSushi/ripgrep)
 sudo apt install ripgrep
-pip3 install python-lsp-server
 
 # Setup fonts
 FONTS_PATH="$HOME/.local/share/fonts"

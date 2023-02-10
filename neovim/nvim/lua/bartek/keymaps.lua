@@ -1,11 +1,10 @@
-local opts = { noremap = true, silent = true }
-local term_opts = { silent = true }
+local opts = { silent = true }
+-- local term_opts = { silent = true }
 
--- Shorten function name
 local keymap = vim.keymap.set
 
---Remap space as leader key
-keymap("", "<Space>", "<Nop>", opts)
+-- Remap space as leader key
+keymap("", "<space>", "<Nop>", opts)
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
@@ -24,12 +23,9 @@ vim.g.maplocalleader = " "
 --keymap("n", "<C-k>", "<C-w>k", opts)
 --keymap("n", "<C-l>", "<C-w>l", opts)
 
--- Open tree explorer on the left taking 30% of width
--- in directory of current file
-keymap("n", "<Leader>e", ":Lexplore 30<CR>", opts)
+keymap("n", "<leader>e", function() vim.cmd.Lexplore(80) end)
 
--- Saving
-keymap("n", "<Leader>w", ":write<CR>", opts)
+keymap("n", "<leader>w", vim.cmd.write)
 
 -- Resize with arrows
 keymap("n", "<C-Up>", ":resize +2<CR>", opts)
@@ -38,11 +34,10 @@ keymap("n", "<C-Left>", ":vertical resize -2<CR>", opts)
 keymap("n", "<C-Right>", ":vertical resize +2<CR>", opts)
 
 -- Navigate buffers
-keymap("n", "<S-l>", ":bnext<CR>", opts)
-keymap("n", "<S-h>", ":bprevious<CR>", opts)
+keymap("n", "<S-l>", vim.cmd.bnext, opts)
+keymap("n", "<S-h>", vim.cmd.bprevious, opts)
 
 -- Insert --
--- Press jk/kj fast to enter
 keymap("i", "jk", "<ESC>", opts)
 keymap("i", "kj", "<ESC>", opts)
 
@@ -73,9 +68,9 @@ keymap("t", "<C-k>", "<C-\\><C-N><C-w>k", term_opts)
 keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
 
 -- Telescope
-keymap("n", "<Leader>f", "<cmd>Telescope find_files<CR>", opts)
+keymap("n", "<leader>f", "<cmd>Telescope find_files<CR>", opts)
 --keymap("n", "<leader>f", "<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({ previewer = false }))<cr>", opts)
 keymap("n", "<C-t>", "<cmd>Telescope live_grep<CR>", opts)
 
 -- Close quickfix window (currently used only when displaying references)
-keymap("n", "<Leader>cc", ":cclose<CR>", opts)
+keymap("n", "<leader>cc", ":cclose<CR>", opts)
