@@ -39,26 +39,7 @@ end
 -- Install your plugins here
 return packer.startup(function(use)
     use('wbthomason/packer.nvim') -- Have packer manage itself
-    --use "nvim-lua/popup.nvim" -- An implementation of the Popup API from vim in Neovim
-    -- use('nvim-lua/plenary.nvim') -- Useful lua functions used by lots of plugins
-
     use('Mofiqul/vscode.nvim')
-
---    use('hrsh7th/nvim-cmp') -- The completion plugin
---    use('hrsh7th/cmp-buffer') -- buffer completions
---    use('hrsh7th/cmp-path') -- path completions
---    use('hrsh7th/cmp-cmdline') -- cmdline completions
---    use('saadparwaiz1/cmp_luasnip') -- snippet completions
---    use('hrsh7th/cmp-nvim-lsp')
---    use('onsails/lspkind.nvim')
---
---    use('L3MON4D3/LuaSnip') --snippet engine
---    use('rafamadriz/friendly-snippets') -- a bunch of snippets to use
---
---    use('neovim/nvim-lspconfig') -- enable LSP
---    -- use('williamboman/nvim-lsp-installer') -- simple to use language server installer
---    use('williamboman/mason.nvim')
---    use('williamboman/mason-lspconfig.nvim')
     use({
         'nvim-telescope/telescope.nvim', tag = '0.1.1',
         requires = { {'nvim-lua/plenary.nvim'} }
@@ -68,6 +49,28 @@ return packer.startup(function(use)
         run = ':TSUpdate'
     })
     use('lewis6991/gitsigns.nvim')
+    use {
+        'VonHeikemen/lsp-zero.nvim',
+        branch = 'v1.x',
+        requires = {
+            -- LSP Support
+            {'neovim/nvim-lspconfig'},
+            {'williamboman/mason.nvim'},
+            {'williamboman/mason-lspconfig.nvim'},
+
+            -- Autocompletion
+            {'hrsh7th/nvim-cmp'},
+            {'hrsh7th/cmp-nvim-lsp'},
+            {'hrsh7th/cmp-buffer'},
+            {'hrsh7th/cmp-path'},
+            {'saadparwaiz1/cmp_luasnip'},
+            {'hrsh7th/cmp-nvim-lua'},
+
+            -- Snippets
+            {'L3MON4D3/LuaSnip'},
+            {'rafamadriz/friendly-snippets'},
+        }
+    }
 
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
