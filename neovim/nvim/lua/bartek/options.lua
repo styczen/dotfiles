@@ -1,4 +1,4 @@
-vim.opt.guicursor = ""
+-- vim.opt.guicursor = ""
 vim.opt.cmdheight = 2
 
 vim.opt.number = true
@@ -22,6 +22,8 @@ vim.opt.undofile = true
 
 vim.opt.hlsearch = false
 vim.opt.incsearch = true
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
 
 vim.opt.termguicolors = true
 
@@ -33,3 +35,5 @@ vim.opt.isfname:append('@-@')
 vim.opt.updatetime = 50
 
 vim.opt.colorcolumn = '100'
+
+vim.opt.completeopt = 'menuone,noselect'

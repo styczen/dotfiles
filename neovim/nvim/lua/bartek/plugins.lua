@@ -27,15 +27,6 @@ if not ok then
     return
 end
 
----- Have packer use a popup window
---packer.init {
---  display = {
---    open_fn = function()
---      return require("packer.util").float { border = "rounded" }
---    end,
---  },
---}
-
 -- Install your plugins here
 return packer.startup(function(use)
     use('wbthomason/packer.nvim') -- Have packer manage itself
@@ -49,28 +40,46 @@ return packer.startup(function(use)
         run = ':TSUpdate'
     })
     use('lewis6991/gitsigns.nvim')
-    use {
-        'VonHeikemen/lsp-zero.nvim',
-        branch = 'v1.x',
-        requires = {
-            -- LSP Support
-            {'neovim/nvim-lspconfig'},
-            {'williamboman/mason.nvim'},
-            {'williamboman/mason-lspconfig.nvim'},
 
-            -- Autocompletion
-            {'hrsh7th/nvim-cmp'},
-            {'hrsh7th/cmp-nvim-lsp'},
-            {'hrsh7th/cmp-buffer'},
-            {'hrsh7th/cmp-path'},
-            {'saadparwaiz1/cmp_luasnip'},
-            {'hrsh7th/cmp-nvim-lua'},
+    -- LSP Support
+    use('neovim/nvim-lspconfig')
+    use('williamboman/mason.nvim')
+    use('williamboman/mason-lspconfig.nvim')
 
-            -- Snippets
-            {'L3MON4D3/LuaSnip'},
-            {'rafamadriz/friendly-snippets'},
-        }
-    }
+    -- Autocompletion
+    use('hrsh7th/nvim-cmp')
+    use('hrsh7th/cmp-nvim-lsp')
+    use('hrsh7th/cmp-buffer')
+    use('hrsh7th/cmp-path')
+    use('hrsh7th/cmp-nvim-lua')
+    use('saadparwaiz1/cmp_luasnip')
+
+    -- Snippets
+    use('L3MON4D3/LuaSnip')
+    use('rafamadriz/friendly-snippets')
+
+--    use {
+--        'VonHeikemen/lsp-zero.nvim',
+--        branch = 'v1.x',
+--        requires = {
+--            -- LSP Support
+--            {'neovim/nvim-lspconfig'},
+--            {'williamboman/mason.nvim'},
+--            {'williamboman/mason-lspconfig.nvim'},
+--
+--            -- Autocompletion
+--            {'hrsh7th/nvim-cmp'},
+--            {'hrsh7th/cmp-nvim-lsp'},
+--            {'hrsh7th/cmp-buffer'},
+--            {'hrsh7th/cmp-path'},
+--            {'saadparwaiz1/cmp_luasnip'},
+--            {'hrsh7th/cmp-nvim-lua'},
+--
+--            -- Snippets
+--            {'L3MON4D3/LuaSnip'},
+--            {'rafamadriz/friendly-snippets'},
+--        }
+--    }
 
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins

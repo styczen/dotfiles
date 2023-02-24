@@ -3,8 +3,8 @@ if not ok then
     vim.notify('"telescope" not found')
     return
 end
-builtin = require('telescope.builtin')
-actions = require('telescope.actions')
+local builtin = require('telescope.builtin')
+local actions = require('telescope.actions')
 
 telescope.setup({
     defaults = {

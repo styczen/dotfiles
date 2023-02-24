@@ -1,4 +1,4 @@
-local opts = { silent = true }
+local opts = { noremap = true, silent = true }
 -- local term_opts = { silent = true }
 
 local keymap = vim.keymap.set
@@ -24,7 +24,6 @@ vim.g.maplocalleader = " "
 --keymap("n", "<C-l>", "<C-w>l", opts)
 
 keymap("n", "<leader>e", vim.cmd.Explore)
-
 keymap("n", "<leader>w", vim.cmd.write)
 
 -- Resize with arrows
