@@ -7,8 +7,7 @@ fi
 
 # Install dependencies
 # ripgrep (https://github.com/BurntSushi/ripgrep)
-sudo apt install ripgrep
-#pip3 install python-lsp-server
+sudo apt install ripgrep g++ python3-venv python3-pip npm
 
 # Setup fonts
 FONTS_PATH="$HOME/.local/share/fonts"
@@ -19,5 +18,6 @@ rm 3270.zip
 fc-cache -f
 echo "Please restart terminal"
 
+mkdir -p $HOME/.config
 ln -s "$PWD/nvim" "$HOME/.config/nvim"
 
