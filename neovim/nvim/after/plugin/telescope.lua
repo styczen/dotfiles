@@ -1,6 +1,6 @@
 local ok, telescope = pcall(require, 'telescope')
 if not ok then
-    vim.notify('"telescope" not found')
+    vim.notify('"telescope" not found', vim.log.levels.WARN)
     return
 end
 local builtin = require('telescope.builtin')
@@ -20,8 +20,7 @@ telescope.setup({
 vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
 vim.keymap.set('n', '<leader>fg', builtin.git_files, {})
 vim.keymap.set('n', '<leader>ps', builtin.live_grep, {})
--- vim.keymap.set('n', '<leader>ps', function()
--- 	builtin.grep_string({ search = vim.fn.input('Grep > ') });
--- end)
-vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
+vim.keymap.set('n', '<leader>gs', builtin.grep_string, {})
+vim.keymap.set('n', '<leader><space>', builtin.buffers, {})
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
+vim.keymap.set('n', '<leader>dd', builtin.diagnostics, {})

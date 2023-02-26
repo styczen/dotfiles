@@ -13,6 +13,7 @@ end
 local packer_bootstrap = ensure_packer()
 
 -- Autocommand that reloads neovim whenever you save the plugins.lua file
+-- TODO: Write it in Lua
 vim.cmd [[
     augroup packer_user_config
         autocmd!
@@ -21,15 +22,15 @@ vim.cmd [[
 ]]
 
 -- Use a protected call so we don't error out on first use
-local ok, packer = pcall(require, 'packer')
-if not ok then
+local packer_ok, packer = pcall(require, 'packer')
+if not packer_ok then
     vim.notify('"packer" not found')
     return
 end
 
 -- Install your plugins here
 return packer.startup(function(use)
-    use('wbthomason/packer.nvim') -- Have packer manage itself
+    use('wbthomason/packer.nvim')
     use('Mofiqul/vscode.nvim')
     use({
         'nvim-telescope/telescope.nvim', tag = '0.1.1',
@@ -49,40 +50,16 @@ return packer.startup(function(use)
     -- Autocompletion
     use('hrsh7th/nvim-cmp')
     use('hrsh7th/cmp-nvim-lsp')
-    use('hrsh7th/cmp-buffer')
-    use('hrsh7th/cmp-path')
-    use('hrsh7th/cmp-nvim-lua')
+    use('L3MON4D3/LuaSnip')
     use('saadparwaiz1/cmp_luasnip')
 
+    -- use('hrsh7th/cmp-buffer')
+    -- use('hrsh7th/cmp-path')
+    -- use('hrsh7th/cmp-nvim-lua')
+
     -- Snippets
-    use('L3MON4D3/LuaSnip')
-    use('rafamadriz/friendly-snippets')
+    -- use('rafamadriz/friendly-snippets')
 
---    use {
---        'VonHeikemen/lsp-zero.nvim',
---        branch = 'v1.x',
---        requires = {
---            -- LSP Support
---            {'neovim/nvim-lspconfig'},
---            {'williamboman/mason.nvim'},
---            {'williamboman/mason-lspconfig.nvim'},
---
---            -- Autocompletion
---            {'hrsh7th/nvim-cmp'},
---            {'hrsh7th/cmp-nvim-lsp'},
---            {'hrsh7th/cmp-buffer'},
---            {'hrsh7th/cmp-path'},
---            {'saadparwaiz1/cmp_luasnip'},
---            {'hrsh7th/cmp-nvim-lua'},
---
---            -- Snippets
---            {'L3MON4D3/LuaSnip'},
---            {'rafamadriz/friendly-snippets'},
---        }
---    }
-
-    -- Automatically set up your configuration after cloning packer.nvim
-    -- Put this at the end after all plugins
     if packer_bootstrap then
         require('packer').sync()
     end
