@@ -65,17 +65,7 @@ end
 local servers = {
     rust_analyzer = {},
     tsserver = {},
---    pylsp = {
---        settings = {
---            pylsp = {
---                plugins = {
---                    pycodestyle = {
---                        maxLineLength = 100
---                    }
---                }
---            }
---        }
---    },
+    -- TODO: Make it work
     pylsp = {
         settings = {
             pylsp = {
