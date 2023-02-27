@@ -63,23 +63,24 @@ local on_attach = function(_, bufnr)
 end
 
 local servers = {
+    -- Rust
     rust_analyzer = {},
+
+    -- Javascript/Typescript
     tsserver = {},
-    -- TODO: Make it work
+
+    -- Python
     pylsp = {
-        settings = {
-            pylsp = {
-                plugins = {
-                    pycodestyle = {
-                        maxLineLength = 120
-                    },
-                    flake8 = {
-                        maxLineLength = 120
-                    }
-                }
+        pylsp = {
+            plugins = {
+                pycodestyle = {
+                    maxLineLength = 100
+                },
             }
         }
     },
+
+    -- Lua
     lua_ls = {
         Lua = {
             workspace = { checkThirdParty = false },
