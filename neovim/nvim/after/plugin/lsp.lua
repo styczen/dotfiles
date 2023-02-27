@@ -24,42 +24,38 @@ if not builtin_ok then
     return
 end
 
+local opts = { noremap=true, silent=true }
+vim.keymap.set('n', 'gl', vim.diagnostic.open_float, opts)
+vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
+vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
+vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, opts)
+
 -- LSP setup
 local on_attach = function(_, bufnr)
-    local keymap = function(mode, keys, func, desc)
-        if desc then
-            desc = 'LSP: ' .. desc
-        end
+    local bufopts = { noremap=true, silent=true, buffer=bufnr }
+    vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, bufopts)
+    vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, bufopts)
 
-        vim.keymap.set(mode, keys, func, { buffer = bufnr, desc = desc })
-    end
-
-    keymap('n', '<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
-    keymap('n', '<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
-
-    keymap('n', 'gd', vim.lsp.buf.definition, '[G]oto [D]efinition')
-    keymap('n', 'gD', vim.lsp.buf.declaration, '[G]oto [D]efinition')
-    keymap('n', 'gr', builtin.lsp_references, '[G]oto [R]eferences')
-    keymap('n', 'gi', vim.lsp.buf.implementation, '[G]oto [I]mplementation')
-    keymap('n', 'gl', vim.diagnostic.open_float, '[O]pen [F]loating window')
-    keymap('n', '<leader>D', vim.lsp.buf.type_definition, 'Type [D]efinition')
-    keymap('n', '<leader>ds', builtin.lsp_document_symbols, '[D]ocument [S]ymbols')
-    keymap('n', '<leader>ws', builtin.lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
-    keymap('n', '<leader>[d', vim.diagnostic.goto_prev, 'Move to the previous diagnostic')
-    keymap('n', '<leader>]d', vim.diagnostic.goto_next, 'Move to the next diagnostic')
+    vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
+    vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
+    vim.keymap.set('n', 'gr', builtin.lsp_references, bufopts)
+    vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
+    vim.keymap.set('n', '<leader>D', vim.lsp.buf.type_definition, bufopts)
+    vim.keymap.set('n', '<leader>ds', builtin.lsp_document_symbols, bufopts)
+    vim.keymap.set('n', '<leader>ws', builtin.lsp_dynamic_workspace_symbols, bufopts)
 
     -- See `:help K` for why this keymap
-    keymap('n', 'K', vim.lsp.buf.hover, 'Hover Documentation')
-    keymap('n', '<C-k>', vim.lsp.buf.signature_help, 'Signature Documentation')
+    vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
+    vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
 
     -- Lesser used LSP functionality
---    keymap('n', '<leader>wa', vim.lsp.buf.add_workspace_folder, '[W]orkspace [A]dd Folder')
---    keymap('n', '<leader>wr', vim.lsp.buf.remove_workspace_folder, '[W]orkspace [R]emove Folder')
-    keymap('n', '<leader>wl', function()
+    vim.keymap.set('n', '<leader>wa', vim.lsp.buf.add_workspace_folder, bufopts)
+    vim.keymap.set('n', '<leader>wr', vim.lsp.buf.remove_workspace_folder, bufopts)
+    vim.keymap.set('n', '<leader>wl', function()
         print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-    end, '[W]orkspace [L]ist Folders')
+    end, bufopts)
 
-    keymap('v', '<leader>f', '<cmd>lua vim.lsp.buf.format()<CR><ESC>', '[F]ormat highlighted text')
+    vim.keymap.set('v', '<leader>f', '<cmd>lua vim.lsp.buf.format()<CR><ESC>', bufopts)
 end
 
 local servers = {
