@@ -37,12 +37,13 @@ keymap("i", "kj", "<ESC>", opts)
 keymap("v", "<", "<gv", opts)
 keymap("v", ">", ">gv", opts)
 
--- Move text up and down
+-- Move text up and down and apply indents
 keymap("v", "<S-j>", ":move '>+1<CR>gv=gv", opts)
 keymap("v", "<S-k>", ":move '<-2<CR>gv=gv", opts)
 
 -- Keep in register value which was originaly copied
-keymap("v", "p", '"_dp', opts)
+keymap("x", "<leader>p", "\"_dP")
+-- keymap("v", "p", '"_dp', opts)
 
 -- Terminal --
 -- Better terminal navigation
