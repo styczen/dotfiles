@@ -55,7 +55,10 @@ local on_attach = function(_, bufnr)
         print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
     end, bufopts)
 
-    vim.keymap.set('v', '<leader>f', '<cmd>lua vim.lsp.buf.format()<CR><ESC>', bufopts)
+    vim.keymap.set('v', '<leader>f', function()
+        vim.lsp.buf.format()
+        vim.api.nvim_input('<ESC>')
+    end, bufopts)
 end
 
 local servers = {
