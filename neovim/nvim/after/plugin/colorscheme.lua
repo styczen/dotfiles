@@ -6,7 +6,7 @@ if not ok then
     return
 end
 
-local c = require('vscode.colors')
+local c = require('vscode.colors').get_colors()
 vscode.setup({
     -- Enable transparent background
     transparent = true,
@@ -24,3 +24,4 @@ vscode.setup({
         GitSignsChange = { fg = c.vscMediumBlue, bg = 'NONE' }
     }
 })
+vscode.load()
