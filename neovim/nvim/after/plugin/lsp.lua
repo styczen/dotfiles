@@ -72,7 +72,11 @@ local servers = {
     pylsp = {
         pylsp = {
             plugins = {
+                autopep8 = {
+                    enabled = true
+                },
                 pycodestyle = {
+                    enabled = true,
                     maxLineLength = 100
                 },
             }
