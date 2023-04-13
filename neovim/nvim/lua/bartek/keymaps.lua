@@ -13,7 +13,7 @@ vim.g.maplocalleader = " "
 --   term_mode = "t",
 --   command_mode = "c",
 
-vim.keymap.set("n", "<leader>e", vim.cmd.Explore)
+vim.keymap.set("n", "<leader>e", function() vim.cmd.Lexplore(100) end)
 vim.keymap.set("n", "<leader>w", vim.cmd.write)
 
 -- Resize with arrows
