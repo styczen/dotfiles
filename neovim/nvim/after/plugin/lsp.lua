@@ -55,10 +55,14 @@ local on_attach = function(_, bufnr)
         print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
     end, bufopts)
 
+    -- Selection formatting
     vim.keymap.set('v', '<leader>f', function()
         vim.lsp.buf.format()
         vim.api.nvim_input('<ESC>')
     end, bufopts)
+
+    -- Whole file formatting
+    vim.keymap.set('n', '<leader>f', vim.lsp.buf.format)
 end
 
 local servers = {
