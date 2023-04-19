@@ -56,13 +56,16 @@ return packer.startup(function(use)
     use('hrsh7th/cmp-nvim-lsp')
     use('L3MON4D3/LuaSnip')
     use('saadparwaiz1/cmp_luasnip')
-
     -- use('hrsh7th/cmp-buffer')
     -- use('hrsh7th/cmp-path')
     -- use('hrsh7th/cmp-nvim-lua')
 
     -- Snippets
     -- use('rafamadriz/friendly-snippets')
+
+    -- Context aware commenting e.g. TSX/JSX braces
+    use('numToStr/Comment.nvim')
+    use('JoosepAlviste/nvim-ts-context-commentstring')
 
     if packer_bootstrap then
         require('packer').sync()
