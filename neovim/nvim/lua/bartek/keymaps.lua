@@ -56,10 +56,5 @@ vim.keymap.set("n", "<leader>cc", ":cclose<CR>", opts)
 -- Basically black magic - replace the word the cursor is over
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 
--- TODO: Do formatting with formatter installed with Mason
--- vim.keymap.set('v', '<leader>f', function()
---     if vim.bo.filetype == 'json' then
--- --        vim.cmd('!python3 -m json.tool')
---         vim.cmd("':'<,'>!python3 -m json.tool")
---     end
--- end)
+-- Copy selection into clipboard
+vim.keymap.set("v", "<leader>y", '"+y')
