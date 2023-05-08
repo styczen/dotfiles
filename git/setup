@@ -1,0 +1,13 @@
+#!/bin/sh
+
+if [ -z "$(which git)" ]; then
+  echo [ERROR]: Need to install git.
+  exit 1
+fi
+
+ln -sf "$PWD/.gitconfig" "$HOME/.gitconfig"
+ln -sf "$PWD/.gitconfig_personal" "$HOME/.gitconfig_personal"
+ln -sf "$PWD/.gitconfig_work" "$HOME/.gitconfig_work"
+
+echo "Please modify email in .gitconfig_work file"
+

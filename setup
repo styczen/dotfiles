@@ -2,7 +2,7 @@
 
 set -e
 
-for i in neovim tmux; do
+for i in neovim tmux git; do
     echo "$PWD/$i"
     cd $i && ./setup
     cd ..
