@@ -11,6 +11,7 @@ null_ls.setup({
     sources = {
         -- Formatters
         formatting.prettier,
+        -- formatting.clang_format,
 
         -- Linters
         diagnostics.eslint,
