@@ -5,10 +5,6 @@ if [ -z "$(which nvim)" ]; then
   exit 1
 fi
 
-# Install dependencies
-# ripgrep (https://github.com/BurntSushi/ripgrep)
-sudo apt install -y ripgrep g++ python3-venv python3-pip npm
-
 # Setup fonts
 FONTS_PATH="$HOME/.local/share/fonts"
 mkdir -p $FONTS_PATH

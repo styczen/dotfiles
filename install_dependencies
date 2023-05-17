@@ -1,0 +1,11 @@
+#!/bin/sh
+
+# Install dependencies
+sudo apt install -y \
+    jq \
+    fzf \
+    ripgrep \
+    g++ \
+    python3-venv \
+    python3-pip \
+    npm
