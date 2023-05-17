@@ -10,10 +10,10 @@ if [[ -z $selected ]]; then
     exit 0
 fi
 
-tmux new-session -c $selected
-
 # Currently I just want to open tmux on desired location.
 # Later I will figure out sessions and uncomment lines below
+#
+tmux new-session -c $selected
 #
 # selected_name=$(basename "$selected" | tr . _)
 # tmux_running=$(pgrep tmux)
