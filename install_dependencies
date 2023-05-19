@@ -8,4 +8,5 @@ sudo apt install -y \
     g++ \
     python3-venv \
     python3-pip \
-    npm
+    npm \
+    htop

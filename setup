@@ -2,6 +2,12 @@
 
 set -e
 
+mkdir -p ~/.local/bin
+
+echo "PATH=$PATH:~/.local/bin" >> ~/.bashrc
+
+./install_dependencies
+
 for i in neovim tmux git; do
     echo "$PWD/$i"
     cd $i && ./setup
