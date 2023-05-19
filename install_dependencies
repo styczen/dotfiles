@@ -9,4 +9,5 @@ sudo apt install -y \
     python3-venv \
     python3-pip \
     npm \
-    htop
+    htop \
+    xclip
