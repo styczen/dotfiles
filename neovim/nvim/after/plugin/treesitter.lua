@@ -15,6 +15,7 @@ configs.setup {
         'markdown',
         'bash',
         'tsx',
+        'json',
     },
 
     -- Install parsers synchronously (only applied to `ensure_installed`)
