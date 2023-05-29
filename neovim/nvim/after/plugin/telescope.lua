@@ -5,6 +5,20 @@ if not ok then
 end
 local builtin = require('telescope.builtin')
 local actions = require('telescope.actions')
+local previewers = require('telescope.previewers')
+
+local new_maker = function(filepath, bufnr, opts)
+    opts = opts or {}
+    filepath = vim.fn.expand(filepath)
+    vim.loop.fs_stat(filepath, function(_, stat)
+        if not stat then return end
+        if stat.size > 1000000 then
+            return
+        else
+            previewers.buffer_previewer_maker(filepath, bufnr, opts)
+        end
+    end)
+end
 
 telescope.setup({
     defaults = {
@@ -13,7 +27,8 @@ telescope.setup({
                 ['<C-j>'] = actions.move_selection_next,
                 ['<C-k>'] = actions.move_selection_previous,
             }
-        }
+        },
+        buffer_previewer_maker = new_maker,
     }
 })
 
