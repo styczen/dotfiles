@@ -1,9 +1,6 @@
 #!/bin/sh
 
-if [ -z "$(which git)" ]; then
-  echo [ERROR]: Need to install git.
-  exit 1
-fi
+sudo apt install -y git
 
 ln -sf "$PWD/.gitconfig" "$HOME/.gitconfig"
 ln -sf "$PWD/.gitconfig_personal" "$HOME/.gitconfig_personal"
