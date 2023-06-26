@@ -77,11 +77,44 @@ local servers = {
         pylsp = {
             plugins = {
                 autopep8 = {
-                    enabled = true
+                    enabled = false,
                 },
                 pycodestyle = {
+                    enabled = false,
+                },
+                pyflakes = {
+                    enabled = false,
+                },
+                pydocstyle = {
+                    enabled = false,
+                },
+                jedi_completion = {
                     enabled = true,
-                    maxLineLength = 100
+                },
+                jedi_definition = {
+                    enabled = true,
+                },
+                jedi_hover = {
+                    enabled = true,
+                },
+                jedi_references = {
+                    enabled = true,
+                },
+                jedi_signature_help = {
+                    enabled = true,
+                },
+                jedi_symbols = {
+                    enabled = true,
+                },
+                mccabe = {
+                    enabled = false,
+                },
+                flake8 = {
+                    enabled = true,
+                    maxLineLength = 100,
+                },
+                yapf = {
+                    enabled = true,
                 },
             }
         }
