@@ -134,6 +134,19 @@ local servers = {
 
     -- C++
     clangd = {},
+
+    -- Dotnet/C#/Unity
+    omnisharp = {
+        omnisharp = {
+            useModernNet = false,
+            monoPath = "/usr/bin/mono",
+        },
+        dotnet = {
+            server = {
+                useOmnisharp = true,
+            },
+        },
+    },
 }
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
