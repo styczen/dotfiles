@@ -12,4 +12,5 @@ sudo apt install -y \
     htop \
     xclip \
     clangd \
-    kazam
+    brightnessctl \
+    maim
