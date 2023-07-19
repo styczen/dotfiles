@@ -9,9 +9,15 @@ echo "PATH=$PATH:~/.local/bin" >> ~/.bashrc
 
 ./install_dependencies
 
-for i in neovim tmux git i3; do
+for i in git tmux i3 neovim; do
     echo "$PWD/$i"
     cd $i && ./setup
     cd ..
 done
+
+# There is issue with brightnessctl for new Ubuntu:
+# https://github.com/Hummer12007/brightnessctl/issues/63#issuecomment-921753747
+sudo usermod -aG video ${USER}
+
+echo "Please reboot"
 
