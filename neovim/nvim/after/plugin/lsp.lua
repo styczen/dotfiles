@@ -75,18 +75,24 @@ local servers = {
     -- Python
     pylsp = {
         pylsp = {
+            configurationSources = {'flake8'},
             plugins = {
                 -- Formatter
                 yapf = {
-                    enabled = true,
+                    enabled = false,
                 },
                 autopep8 = {
                     enabled = false,
                 },
+                black = {
+                    enabled = true,
+                },
                 -- Linter
                 flake8 = {
                     enabled = true,
-                    maxLineLength = 100,
+                    ignore = {
+                        'E501', -- ignore line length warning because formatter does its thing
+                    },
                 },
                 mccabe = {
                     enabled = false,
