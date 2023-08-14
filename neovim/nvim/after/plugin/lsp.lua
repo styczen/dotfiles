@@ -120,6 +120,15 @@ local servers = {
 
     -- C++
     clangd = {},
+
+    -- C#
+    omnisharp = {
+        dotnet = {
+            server = {
+                useOmnisharp = false,
+            },
+        },
+    },
 }
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
