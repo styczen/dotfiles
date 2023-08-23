@@ -30,17 +30,17 @@ telescope.setup({
         },
         buffer_previewer_maker = new_maker,
     },
-	pickers = {
-		find_files = {
-            hidden = true,
-		},
+    pickers = {
+        find_files = {
+            find_command = { 'rg', '--files', '--hidden', '--glob', '!**/.git/*' },
+        },
         grep_string = {
-            additional_args = { "--hidden" },
+            additional_args = { '--hidden', '--glob', '!**/.git/*' },
         },
         live_grep = {
-            additional_args = { "--hidden" },
+            additional_args = { '--hidden', '--glob', '!**/.git/*' },
         },
-	},
+    },
 })
 
 vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
