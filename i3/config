@@ -191,8 +191,8 @@ bindsym $mod+r mode "resize"
 
 # Check if there is at least one monitor active, if not, activate built-in monitor 
 # TODO: Fix xrandr working correctly
-exec --no-startup-id /bin/bash -c "xrandr --output eDP-1-1 --auto"
-# exec --no-startup-id /bin/bash -c "output=$(xrandr --listactivemonitors | wc -l) && [[ $output -eq 1 ]] && xrandr --output eDP-1-1 --auto"
+# exec --no-startup-id /bin/bash -c "xrandr --output eDP-1-1 --auto"
+exec --no-startup-id /bin/bash -c "output=$(xrandr --listactivemonitors | wc -l) && [[ $output -eq 1 ]] && xrandr --output eDP-1-1 --auto"
 
 # Set wallpaper
 exec --no-startup-id feh --bg-fill "/usr/share/backgrounds/pop/tim-mccartney-39907.jpg"

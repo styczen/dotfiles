@@ -6,3 +6,6 @@ PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[0
 
 # Dark theme
 export GTK_THEME=Adwaita:dark
+
+# Temporary fix to turn on built in display
+alias fix_display='xrandr --output eDP-1-1 --auto'
