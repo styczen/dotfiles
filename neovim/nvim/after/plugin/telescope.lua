@@ -26,10 +26,21 @@ telescope.setup({
             i = {
                 ['<C-j>'] = actions.move_selection_next,
                 ['<C-k>'] = actions.move_selection_previous,
-            }
+            },
         },
         buffer_previewer_maker = new_maker,
-    }
+    },
+	pickers = {
+		find_files = {
+            hidden = true,
+		},
+        grep_string = {
+            additional_args = { "--hidden" },
+        },
+        live_grep = {
+            additional_args = { "--hidden" },
+        },
+	},
 })
 
 vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
