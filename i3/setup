@@ -2,3 +2,5 @@
 
 ln -sf "$PWD/config" "$HOME/.config/i3/config"
 
+# Investigate some sweet dmenu options to make screenshots and recordings:
+# https://github.com/yschaeff/sway_screenshots/blob/master/screenshot.sh
