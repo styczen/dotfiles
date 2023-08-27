@@ -10,5 +10,5 @@ sudo apt update && sudo apt install -y \
     npm \
     htop \
     xclip \
-    clangd
-
+    clangd \
+    kazam

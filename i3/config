@@ -199,7 +199,10 @@ exec --no-startup-id feh --bg-fill "/usr/share/backgrounds/pop/tim-mccartney-399
 
 # Screenshot - copy selection to clipboard and save to PNG with current date as a name
 # NOTE: Run this command to screenshot active window: maim --window $(xdotool getactivewindow)
-bindsym Print exec --no-startup-id maim --select | xclip -selection clipboard -t image/png && xclip -selection clipboard -o > "/home/$USER/Pictures/$(date --iso-8601=seconds).png"
+# bindsym Print exec --no-startup-id maim --select | xclip -selection clipboard -t image/png && xclip -selection clipboard -o > "/home/$USER/Pictures/$(date --iso-8601=seconds).png"
+
+# Kazam handles screenshots and screen recordings
+bindsym Print exec --no-startup-id kazam
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
