@@ -1,5 +1,10 @@
 #!/bin/sh
 
+# Install Neovim release version
+wget https://github.com/neovim/neovim/releases/download/stable/nvim.appimage
+chmod u+x nvim.appimage
+mv nvim.appimage ~/.local/bin/nvim
+
 # Setup fonts
 FONTS_PATH="$HOME/.local/share/fonts"
 mkdir -p $FONTS_PATH

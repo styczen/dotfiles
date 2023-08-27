@@ -1,5 +1,18 @@
 #!/bin/sh
 
+# maim - screenshots
+# playerctl - media controls (pause, play, next, previous)
+# brightnessctl - screen brightness control
+sudo apt update && sudo apt install -y \
+    i3 \
+    feh \
+    fzf \
+    ripgrep \
+    brightnessctl \
+    maim \
+    playerctl
+
+mkdir -p $HOME/.config/i3
 ln -sf "$PWD/config" "$HOME/.config/i3/config"
 
 # Investigate some sweet dmenu options to make screenshots and recordings:

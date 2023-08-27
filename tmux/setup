@@ -1,5 +1,8 @@
 #!/bin/sh
 
+sudo apt update && sudo apt install -y \
+    tmux
+
 ln -sf "$PWD/.tmux.conf" "$HOME/.tmux.conf"
 ln -sf "$PWD/tmux-sessionizer" "$HOME/.local/bin/tms"
 

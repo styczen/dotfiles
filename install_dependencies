@@ -2,30 +2,13 @@
 
 # Install dependencies
 # jq - JSON processor
-# maim - screenshots
-# playerctl - media controls (pause, play, next, previous)
-# brightnessctl - screen brightness control
 sudo apt update && sudo apt install -y \
-    git \
-    tmux \
-    i3 \
-    feh \
     jq \
-    fzf \
-    ripgrep \
     g++ \
     python3-venv \
     python3-pip \
     npm \
     htop \
     xclip \
-    clangd \
-    brightnessctl \
-    maim \
-    playerctl
-
-# Install Neovim release version
-wget https://github.com/neovim/neovim/releases/download/stable/nvim.appimage
-chmod u+x nvim.appimage
-mv nvim.appimage ~/.local/bin/nvim
+    clangd
 
