@@ -10,7 +10,8 @@ sudo apt update && sudo apt install -y \
     ripgrep \
     brightnessctl \
     maim \
-    playerctl
+    playerctl \
+    rofi
 
 mkdir -p $HOME/.config/i3
 ln -sf "$PWD/config" "$HOME/.config/i3/config"
