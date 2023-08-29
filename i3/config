@@ -190,23 +190,37 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
+# Start i3bar to display a workspace bar (plus the system information i3status
+# finds out, if available)
+bar {
+        status_command i3status
+}
+
+### Other configuration ###
+
 # Check if there is at least one monitor active, if not, activate built-in monitor 
 # TODO: Fix xrandr working correctly
 exec --no-startup-id /bin/bash -c "xrandr --output eDP-1-1 --auto"
 # exec --no-startup-id /bin/bash -c "output=$(xrandr --listactivemonitors | wc -l) && [[ $output -eq 1 ]] && xrandr --output eDP-1-1 --auto"
 
 # Set wallpaper
-exec --no-startup-id feh --bg-fill "/usr/share/backgrounds/pop/tim-mccartney-39907.jpg"
+exec_always --no-startup-id feh --bg-fill "/usr/share/backgrounds/pop/tim-mccartney-39907.jpg"
 
 # Screenshot - copy selection to clipboard and save to PNG with current date as a name
 # NOTE: Run this command to screenshot active window: maim --window $(xdotool getactivewindow)
 # bindsym Print exec --no-startup-id maim --select | xclip -selection clipboard -t image/png && xclip -selection clipboard -o > "/home/$USER/Pictures/$(date --iso-8601=seconds).png"
 
 # Kazam handles screenshots and screen recordings
-bindsym Print exec --no-startup-id kazam
+# bindsym Print exec --no-startup-id kazam
 
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
-bar {
-        status_command i3status
-}
+# GNOME application to make screenshots - works better than Kazam
+bindsym Print exec --no-startup-id gnome-screenshot -i
+
+# Start small script which fixes Unity not repaiting screen when switched from other workspace
+exec_always --no-startup-id i3unityfix.py &
+
+# Picom
+exec_always --no-startup-id picom 
+
+# General GNOME settings
+exec --no-startup-id gnome-settings-daemon
