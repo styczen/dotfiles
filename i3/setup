@@ -18,6 +18,7 @@ pip3 install i3ipc pynput
 
 mkdir -p $HOME/.config/i3
 ln -sf "$PWD/config" "$HOME/.config/i3/config"
+ln -sf "$PWD/i3status.conf" "$HOME/.config/i3/i3status.conf"
 ln -sf "$PWD/i3unityfix.py" "$HOME/.local/bin/i3unityfix.py"
 
 # Investigate some sweet dmenu options to make screenshots and recordings:
