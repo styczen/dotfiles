@@ -230,3 +230,6 @@ exec --no-startup-id gnome-settings-daemon
 
 # Enable tapping on touchpad (this is laptop specific because of device name)
 exec xinput set-prop "ELAN0A02:01 04F3:30D8 Touchpad" "libinput Tapping Enabled" 1
+
+# Remap CAPS to CTRL
+exec --no-startup-id "setxkbmap -option ctrl:nocaps"
