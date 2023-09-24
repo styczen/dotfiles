@@ -201,10 +201,10 @@ bar {
 
 ### Other configuration ###
 
-# Check if there is at least one monitor active, if not, activate built-in monitor 
-# TODO: Fix xrandr working correctly
+# Start builtin monitor first
 exec --no-startup-id /bin/bash -c "xrandr --output eDP-1-1 --auto"
-# exec --no-startup-id /bin/bash -c "output=$(xrandr --listactivemonitors | wc -l) && [[ $output -eq 1 ]] && xrandr --output eDP-1-1 --auto"
+# Select monitor
+bindsym $mod+m exec "monitor_layout"
 
 # Set wallpaper
 exec_always --no-startup-id feh --bg-fill "/usr/share/backgrounds/pop/tim-mccartney-39907.jpg"
@@ -220,7 +220,7 @@ exec_always --no-startup-id feh --bg-fill "/usr/share/backgrounds/pop/tim-mccart
 bindsym Print exec --no-startup-id gnome-screenshot -i
 
 # Start small script which fixes Unity not repaiting screen when switched from other workspace
-exec_always --no-startup-id i3unityfix.py &
+exec_always --no-startup-id i3unityfix &
 
 # Picom
 exec_always --no-startup-id picom 
