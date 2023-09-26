@@ -14,5 +14,12 @@ rm 3270.zip
 fc-cache -f
 echo "Please restart terminal"
 
+echo "Linking NVIM configuration directory..."
 ln -s "$PWD/nvim" "$HOME/.config/nvim"
 
+# Setup python-lsp-black
+echo "Installing python-lsp-black plugin for Python LSP"
+echo "Sourcing Python LSP venv..."
+source ~/.local/share/nvim/mason/packages/python-lsp-server/venv/bin/activate
+echo "Installing plugin..."
+pip install python-lsp-black

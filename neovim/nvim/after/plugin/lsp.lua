@@ -78,14 +78,14 @@ local servers = {
             configurationSources = {'flake8'},
             plugins = {
                 -- Formatter
+                black = {
+                    enabled = true,
+                },
                 yapf = {
                     enabled = false,
                 },
                 autopep8 = {
                     enabled = false,
-                },
-                black = {
-                    enabled = true,
                 },
                 -- Linter
                 flake8 = {
