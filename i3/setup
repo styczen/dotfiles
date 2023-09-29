@@ -22,6 +22,8 @@ ln -sf "$PWD/config" "$HOME/.config/i3/config"
 ln -sf "$PWD/i3status.conf" "$HOME/.config/i3/i3status.conf"
 ln -sf "$PWD/i3unityfix.py" "$HOME/.local/bin/i3unityfix"
 ln -sf "$PWD/monitor_layout.sh" "$HOME/.local/bin/monitor_layout"
+ln -sf "$PWD/lock_screen.sh" "$HOME/.local/bin/lock_screen"
+cp "$PWD/michael_scott.png" "$HOME/.local/share/backgrounds/michael_scott.png"
 
 # Investigate some sweet dmenu options to make screenshots and recordings:
 # https://github.com/yschaeff/sway_screenshots/blob/master/screenshot.sh
