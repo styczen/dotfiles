@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+# Thanks to kellya: https://github.com/kellya/rofi-sound
+
 # Outputs have spaces in them, so let's make \n the IFS
 IFS=$'\n'
 
