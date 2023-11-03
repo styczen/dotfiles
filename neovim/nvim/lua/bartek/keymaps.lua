@@ -58,3 +58,6 @@ vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><
 
 -- Copy selection into clipboard
 vim.keymap.set("v", "<leader>y", '"+y')
+
+-- Refresh buffers
+vim.keymap.set("n", "<F5>", ":checktime<CR>")

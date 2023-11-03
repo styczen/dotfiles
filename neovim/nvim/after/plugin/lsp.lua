@@ -24,7 +24,7 @@ if not builtin_ok then
     return
 end
 
-local opts = { noremap=true, silent=true }
+local opts = { noremap = true, silent = true }
 vim.keymap.set('n', 'gl', vim.diagnostic.open_float, opts)
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
@@ -32,7 +32,7 @@ vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, opts)
 
 -- LSP setup
 local on_attach = function(_, bufnr)
-    local bufopts = { noremap=true, silent=true, buffer=bufnr }
+    local bufopts = { noremap = true, silent = true, buffer = bufnr }
     vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, bufopts)
     vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, bufopts)
 
@@ -75,7 +75,7 @@ local servers = {
     -- Python
     pylsp = {
         pylsp = {
-            configurationSources = {'flake8'},
+            configurationSources = { 'flake8' },
             plugins = {
                 -- Formatter
                 black = {
@@ -90,8 +90,9 @@ local servers = {
                 -- Linter
                 flake8 = {
                     enabled = true,
-                    ignore = {
-                        'E501', -- ignore line length warning because formatter does its thing
+                    maxLineLength = 88,
+                    extendIgnore = {
+                        'E203',
                     },
                 },
                 mccabe = {
