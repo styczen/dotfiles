@@ -18,12 +18,14 @@ sudo apt update && sudo apt install -y \
 pip3 install i3ipc pynput
 
 mkdir -p $HOME/.config/i3
+mkdir -p $HOME/.local/share/rofi
 ln -sf "$PWD/config" "$HOME/.config/i3/config"
 ln -sf "$PWD/i3status.conf" "$HOME/.config/i3/i3status.conf"
 ln -sf "$PWD/i3unityfix.py" "$HOME/.local/bin/i3unityfix"
 ln -sf "$PWD/monitor-layout" "$HOME/.local/bin/monitor-layout"
 ln -sf "$PWD/lock-screen" "$HOME/.local/bin/lock-screen"
 ln -sf "$PWD/rofi-sound-output-chooser" "$HOME/.local/bin/rofi-sound-output-chooser"
+ln -sf "$PWD/finder" "$HOME/.local/share/rofi/finder"
 cp "$PWD/michael_scott.png" "$HOME/.local/share/backgrounds/michael_scott.png"
 
 # Investigate some sweet dmenu options to make screenshots and recordings:
