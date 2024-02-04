@@ -39,8 +39,8 @@ exec --no-startup-id nm-applet
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +2% && $refresh_i3status
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -2% && $refresh_i3status
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% && $refresh_i3status
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% && $refresh_i3status
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
@@ -223,8 +223,8 @@ exec_always --no-startup-id feh --bg-fill "/usr/share/backgrounds/pop/tim-mccart
 # GNOME application to make screenshots - works better than Kazam
 bindsym Print exec --no-startup-id gnome-screenshot -i
 
-# # Start small script which fixes Unity not repaiting screen when switched from other workspace
-# exec_always --no-startup-id i3unityfix &
+# Start small script which fixes Unity not repaiting screen when switched from other workspace
+exec_always --no-startup-id i3unityfix &
 
 # Picom
 exec_always --no-startup-id picom 
