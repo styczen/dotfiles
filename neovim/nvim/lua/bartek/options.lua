@@ -34,8 +34,12 @@ vim.opt.isfname:append('@-@')
 
 vim.opt.updatetime = 50
 
--- vim.opt.colorcolumn = '100'
-
 vim.opt.completeopt = 'menuone,noselect'
 
 vim.opt.autoread = true
+
+-- Color highlight .urdf files as .xml 
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+    pattern = "*.urdf",
+    command = "setfiletype xml"
+})
