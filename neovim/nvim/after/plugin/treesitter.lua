@@ -16,6 +16,7 @@ configs.setup {
         'bash',
         'tsx',
         'json',
+        'cmake',
     },
 
     -- Install parsers synchronously (only applied to `ensure_installed`)
