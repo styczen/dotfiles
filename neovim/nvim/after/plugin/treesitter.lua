@@ -18,6 +18,7 @@ configs.setup {
         'json',
         'cmake',
         'xml',
+        'typescript',
     },
 
     -- Install parsers synchronously (only applied to `ensure_installed`)
