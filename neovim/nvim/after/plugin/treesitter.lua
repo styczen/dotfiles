@@ -19,6 +19,7 @@ configs.setup {
         'cmake',
         'xml',
         'typescript',
+        'gitcommit',
     },
 
     -- Install parsers synchronously (only applied to `ensure_installed`)
