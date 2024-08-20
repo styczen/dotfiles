@@ -13,6 +13,7 @@ configs.setup {
         'lua',
         'vim',
         'markdown',
+        'markdown_inline',
         'bash',
         'tsx',
         'json',
@@ -20,6 +21,7 @@ configs.setup {
         'xml',
         'typescript',
         'gitcommit',
+        'vimdoc',
     },
 
     -- Install parsers synchronously (only applied to `ensure_installed`)
