@@ -22,6 +22,7 @@ configs.setup {
         'typescript',
         'gitcommit',
         'vimdoc',
+        'make',
     },
 
     -- Install parsers synchronously (only applied to `ensure_installed`)
