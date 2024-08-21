@@ -21,8 +21,10 @@ configs.setup {
         'xml',
         'typescript',
         'gitcommit',
+        'gitignore',
         'vimdoc',
         'make',
+        'bibtex',
     },
 
     -- Install parsers synchronously (only applied to `ensure_installed`)
