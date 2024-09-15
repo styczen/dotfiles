@@ -25,7 +25,6 @@ ln -sf "$PWD/monitor-layout" "$HOME/.local/bin/monitor-layout"
 ln -sf "$PWD/lock-screen" "$HOME/.local/bin/lock-screen"
 ln -sf "$PWD/rofi-sound-output-chooser" "$HOME/.local/bin/rofi-sound-output-chooser"
 ln -sf "$PWD/finder" "$HOME/.local/share/rofi/finder"
-cp "$PWD/michael_scott.png" "$HOME/.local/share/backgrounds/michael_scott.png"
 
 # Investigate some sweet dmenu options to make screenshots and recordings:
 # https://github.com/yschaeff/sway_screenshots/blob/master/screenshot.sh
