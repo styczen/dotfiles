@@ -211,7 +211,7 @@ exec --no-startup-id /bin/bash -c "xrandr --output eDP-1-1 --auto"
 bindsym $mod+m exec "monitor-layout"
 
 # Set wallpaper
-exec_always --no-startup-id feh --bg-fill "/usr/share/backgrounds/pop/tim-mccartney-39907.jpg"
+exec_always --no-startup-id feh --bg-fill "$HOME/personal/dotfiles/i3/tim-mccartney-39907.jpg"
 
 # Screenshot - copy selection to clipboard and save to PNG with current date as a name
 # NOTE: Run this command to screenshot active window: maim --window $(xdotool getactivewindow)
