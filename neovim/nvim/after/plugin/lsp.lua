@@ -70,7 +70,7 @@ local servers = {
     rust_analyzer = {},
 
     -- Javascript/Typescript
-    tsserver = {},
+    ts_ls = {},
 
     -- Python
     pylsp = {

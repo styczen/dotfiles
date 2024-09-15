@@ -13,4 +13,5 @@ sudo apt update && sudo apt install -y \
     clang \
     kazam \
     imagemagick \
-    zathura
+    zathura \
+    libfuse2
