@@ -1,12 +1,6 @@
 [user]
 	name = Bartlomiej Styczen
 
-[filter "lfs"]
-	required = true
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-
 [includeIf "gitdir:~/work/"]
 	path = .gitconfig_work
 
@@ -15,3 +9,11 @@
 
 [core]
     editor = nvim
+
+[lfs "https://github.com/styczen/dotfiles.git/info/lfs"]
+	locksverify = false
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
