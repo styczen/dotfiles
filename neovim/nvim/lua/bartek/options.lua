@@ -14,7 +14,6 @@ vim.opt.splitbelow = true
 vim.opt.splitright = true
 
 vim.opt.wrap = true
-
 vim.opt.swapfile = false
 vim.opt.backup = false
 vim.opt.undodir = os.getenv('HOME') .. '/.vim/undodir'
@@ -40,6 +39,9 @@ vim.opt.autoread = true
 
 -- Color highlight .urdf files as .xml 
 vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
-    pattern = "*.urdf",
+    pattern = { "*.urdf", "*.sdf" },
     command = "setfiletype xml"
 })
+
+vim.opt.spell = true
+vim.opt.spelllang = 'en_gb'

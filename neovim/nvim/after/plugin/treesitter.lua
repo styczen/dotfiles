@@ -24,7 +24,11 @@ configs.setup {
         'gitignore',
         'vimdoc',
         'make',
-        'bibtex',
+        -- 'bibtex',
+        'scss',
+        -- 'latex',
+        'yaml',
+        'tmux',
     },
 
     -- Install parsers synchronously (only applied to `ensure_installed`)
@@ -36,6 +40,7 @@ configs.setup {
 
     highlight = {
         enable = true,
+        disable = { 'latex' },
 
         -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
         -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).

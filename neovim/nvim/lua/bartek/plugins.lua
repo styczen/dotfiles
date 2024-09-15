@@ -67,6 +67,9 @@ return packer.startup(function(use)
     use('numToStr/Comment.nvim')
     use('JoosepAlviste/nvim-ts-context-commentstring')
 
+    -- LaTeX
+    use("lervag/vimtex")
+
     if packer_bootstrap then
         require('packer').sync()
     end

@@ -12,4 +12,5 @@ sudo apt update && sudo apt install -y \
     xclip \
     clang \
     kazam \
-    imagemagick
+    imagemagick \
+    zathura

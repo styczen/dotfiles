@@ -130,6 +130,19 @@ local servers = {
             },
         },
     },
+
+    -- LaTeX
+    texlab = {
+        texlab = {
+            build = {
+                onSave = false,
+            },
+            latexFormatter = "latexindent",
+            latexindent = {
+                modifyLineBreaks = true,
+            },
+        },
+    },
 }
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()

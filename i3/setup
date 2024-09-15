@@ -7,7 +7,6 @@ sudo apt update && sudo apt install -y \
     i3 \
     i3lock \
     feh \
-    fzf \
     ripgrep \
     brightnessctl \
     maim \
