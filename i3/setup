@@ -12,7 +12,8 @@ sudo apt update && sudo apt install -y \
     maim \
     playerctl \
     rofi \
-    gnome-screenshot
+    gnome-screenshot \
+    picom
 
 pip3 install i3ipc pynput
 
