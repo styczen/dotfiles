@@ -15,7 +15,7 @@ mv tree-sitter-linux-x64 $HOME/.local/bin/tree-sitter
 
 # Setup fonts
 echo "Setting up NERD fonts"
-FONTS_PATH="$HOME/.local/share/fonts"
+FONTS_PATH=$HOME/.local/share/fonts
 mkdir -p $FONTS_PATH
 wget --quiet https://github.com/ryanoasis/nerd-fonts/releases/download/v2.2.2/3270.zip
 unzip -d $FONTS_PATH -q 3270.zip
@@ -23,7 +23,7 @@ rm 3270.zip
 fc-cache -f
 
 echo "Linking NVIM configuration directory..."
-ln -s "$PWD/nvim" "$HOME/.config/nvim"
+ln -s $PWD/nvim $HOME/.config/nvim
 
 # Setup python-lsp-black
 echo "Installing python-lsp-black plugin for Python LSP"

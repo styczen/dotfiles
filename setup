@@ -12,7 +12,7 @@ echo "PATH=$PATH:~/.local/bin" >> ~/.bashrc
 
 ./install_dependencies
 
-for i in git tmux i3 neovim; do
+for i in git terminal tmux i3 neovim; do
     echo "$PWD/$i"
     cd $i && ./setup
     cd ..

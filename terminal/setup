@@ -1,0 +1,7 @@
+#!/bin/sh
+
+sudo apt-get install xterm
+
+ln -sf $PWD/.Xresources $HOME/.Xresources
+xrdb $HOME/.Xresources
+

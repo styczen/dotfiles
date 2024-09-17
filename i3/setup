@@ -3,7 +3,7 @@
 # maim - screenshots
 # playerctl - media controls (pause, play, next, previous)
 # brightnessctl - screen brightness control
-sudo apt update && sudo apt install -y \
+sudo apt-get install -y \
     i3 \
     i3lock \
     feh \
@@ -19,13 +19,13 @@ pip3 install i3ipc pynput
 
 mkdir -p $HOME/.config/i3
 mkdir -p $HOME/.local/share/rofi
-ln -sf "$PWD/config" "$HOME/.config/i3/config"
-ln -sf "$PWD/i3status.conf" "$HOME/.config/i3/i3status.conf"
-ln -sf "$PWD/i3unityfix.py" "$HOME/.local/bin/i3unityfix"
-ln -sf "$PWD/monitor-layout" "$HOME/.local/bin/monitor-layout"
-ln -sf "$PWD/lock-screen" "$HOME/.local/bin/lock-screen"
-ln -sf "$PWD/rofi-sound-output-chooser" "$HOME/.local/bin/rofi-sound-output-chooser"
-ln -sf "$PWD/finder" "$HOME/.local/share/rofi/finder"
+ln -sf $PWD/config $HOME/.config/i3/config
+ln -sf $PWD/i3status.conf $HOME/.config/i3/i3status.conf
+ln -sf $PWD/i3unityfix.py $HOME/.local/bin/i3unityfix
+ln -sf $PWD/monitor-layout $HOME/.local/bin/monitor-layout
+ln -sf $PWD/lock-screen $HOME/.local/bin/lock-screen
+ln -sf $PWD/rofi-sound-output-chooser $HOME/.local/bin/rofi-sound-output-chooser
+ln -sf $PWD/finder $HOME/.local/share/rofi/finder
 
 # Investigate some sweet dmenu options to make screenshots and recordings:
 # https://github.com/yschaeff/sway_screenshots/blob/master/screenshot.sh

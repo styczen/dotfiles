@@ -1,6 +1,6 @@
 #!/bin/sh
 
-sudo apt update && sudo apt install -y \
+sudo apt-get install -y \
     git
 
 GIT_LFS_VERSION=3.5.1
@@ -10,11 +10,11 @@ tar -xf git-lfs-linux-amd64-v$GIT_LFS_VERSION.tar.gz
 sudo ./git-lfs-$GIT_LFS_VERSION/install.sh
 rm -rf git-lfs-$GIT_LFS_VERSION git-lfs-linux-amd64-v$GIT_LFS_VERSION.tar.gz
 
-ln -sf "$PWD/.gitconfig" "$HOME/.gitconfig"
-ln -sf "$PWD/.gitconfig_personal" "$HOME/.gitconfig_personal"
+ln -sf $PWD/.gitconfig $HOME/.gitconfig
+ln -sf $PWD/.gitconfig_personal $HOME/.gitconfig_personal
 
 # This copy is done on purpose, because I don't want to leak my work email
-cp "$PWD/.gitconfig_work" "$HOME/.gitconfig_work"
+cp $PWD/.gitconfig_work $HOME/.gitconfig_work
 
 echo "Please modify email in .gitconfig_work file"
 
