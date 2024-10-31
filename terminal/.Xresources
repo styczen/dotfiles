@@ -1,8 +1,13 @@
 xterm*background: black
 xterm*foreground: white
 xterm*faceName: Monospace
-xterm*faceSize: 15
+xterm*faceSize: 14
 xterm*selectToClipboard: true
+xterm*pointerColor: white
+xterm*pointerColorBackground: black
+xterm*pointerShape: left_ptr
+xterm*scrollBarRight: true
+xterm*saveLines: 5000
 xterm*Translations: #override \
                  Ctrl Shift <Key>V:    insert-selection(SELECT) \n\
                  Ctrl Shift <Key>C:    copy-selection(SELECT)

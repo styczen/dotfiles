@@ -29,6 +29,8 @@ configs.setup {
         -- 'latex',
         'yaml',
         'tmux',
+        'csv',
+        'html',
     },
 
     -- Install parsers synchronously (only applied to `ensure_installed`)
