@@ -1,11 +1,11 @@
 [user]
 	name = Bartlomiej Styczen
 
+[include]
+	path = .gitconfig_personal
+
 [includeIf "gitdir:~/work/"]
 	path = .gitconfig_work
-
-[includeIf "gitdir:~/personal/"]
-	path = .gitconfig_personal
 
 [core]
     editor = nvim

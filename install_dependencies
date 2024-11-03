@@ -16,4 +16,7 @@ sudo apt-get update && sudo apt-get install -y \
     zathura \
     libfuse2 \
     vlc \
-    xterm
+    xterm \
+    curl \
+    tree \
+    chromium-browser
