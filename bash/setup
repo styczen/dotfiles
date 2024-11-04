@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+if [ -f BASHRC_UPDATED ]; then
+    echo "Bashrc already updated"
+    exit 0
+fi
+
+echo "source $PWD/.aliases" >> $HOME/.bashrc
+source $HOME/.bashrc
+touch BASHRC_UPDATED

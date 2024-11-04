@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 # maim - screenshots
 # playerctl - media controls (pause, play, next, previous)

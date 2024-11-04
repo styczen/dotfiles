@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 set -e
 
@@ -7,12 +7,14 @@ mkdir -p $HOME/.config
 mkdir -p $HOME/work
 mkdir -p $HOME/personal
 
-
-echo "PATH=$PATH:~/.local/bin" >> ~/.bashrc
+if [ ! -f PATH_UPDATED ]; then
+    echo "PATH=$PATH:$HOME/.local/bin" >> ~/.bashrc
+    touch PATH_UPDATED
+fi
 
 ./install_dependencies
 
-for i in bash git terminal tmux i3 neovim; do
+for i in */; do
     echo "$PWD/$i"
     cd $i && ./setup
     cd ..

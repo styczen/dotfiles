@@ -1,6 +1,6 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
-sudo apt-get install xterm
+sudo apt-get install -y xterm
 
 ln -sf $PWD/.Xresources $HOME/.Xresources
 xrdb $HOME/.Xresources
