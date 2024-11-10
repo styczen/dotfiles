@@ -15,8 +15,11 @@ fi
 ./install_dependencies
 
 for i in */; do
-    echo "$PWD/$i"
-    cd $i && ./setup
+    echo "Running setup for $PWD/$i"
+    cd $i
+    if [ -f "setup" ]; then
+        ./setup
+    fi
     cd ..
 done
 
