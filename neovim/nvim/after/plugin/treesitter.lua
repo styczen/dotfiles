@@ -31,6 +31,7 @@ configs.setup {
         'tmux',
         'csv',
         'html',
+        'toml',
     },
 
     -- Install parsers synchronously (only applied to `ensure_installed`)
