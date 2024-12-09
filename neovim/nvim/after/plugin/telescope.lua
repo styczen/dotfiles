@@ -29,6 +29,7 @@ telescope.setup({
             },
         },
         buffer_previewer_maker = new_maker,
+        file_ignore_patterns = { '.cache' },
     },
     pickers = {
         find_files = {
