@@ -204,8 +204,8 @@ bar {
 
 ### Other configuration ###
 
-# Start builtin monitor first
-exec --no-startup-id /bin/bash -c "xrandr --output eDP-1-1 --auto"
+# # Start builtin monitor first
+# exec --no-startup-id /bin/bash -c "xrandr --output eDP-1-1 --auto"
 
 # Select monitor
 bindsym $mod+m exec "monitor-layout"
