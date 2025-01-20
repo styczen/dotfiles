@@ -18,3 +18,5 @@
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
+[alias]
+	lg = log --all --decorate --oneline --graph
