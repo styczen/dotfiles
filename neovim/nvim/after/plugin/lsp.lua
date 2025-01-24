@@ -75,6 +75,7 @@ local servers = {
     -- Python
     pylsp = {
         pylsp = {
+            skip_token_initialization = true,
             configurationSources = { 'flake8' },
             plugins = {
                 -- Formatter
@@ -121,15 +122,6 @@ local servers = {
 
     -- C++
     clangd = {},
-
-    -- C#
-    omnisharp = {
-        dotnet = {
-            server = {
-                useOmnisharp = false,
-            },
-        },
-    },
 
     -- LaTeX
     texlab = {
