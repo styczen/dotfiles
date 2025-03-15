@@ -39,9 +39,12 @@ vim.keymap.set("v", ">", ">gv", opts)
 vim.keymap.set("v", "<S-j>", ":move '>+1<CR>gv=gv", opts)
 vim.keymap.set("v", "<S-k>", ":move '<-2<CR>gv=gv", opts)
 
--- Keep in register value which was originaly copied
-vim.keymap.set("x", "<leader>p", "\"_dP")
--- vim.keymap.set("v", "p", '"_dp', opts)
+-- Keep in register value which was originally copied
+vim.keymap.set("x", "<leader>p", [["_dP]])
+
+-- next greatest remap ever : asbjornHaland
+vim.keymap.set({"n", "v"}, "<leader>y", [["+y]])
+vim.keymap.set("n", "<leader>Y", [["+Y]])
 
 -- Terminal --
 -- Better terminal navigation
