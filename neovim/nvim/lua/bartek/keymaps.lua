@@ -40,9 +40,9 @@ vim.keymap.set("v", "<S-j>", ":move '>+1<CR>gv=gv", opts)
 vim.keymap.set("v", "<S-k>", ":move '<-2<CR>gv=gv", opts)
 
 -- Keep in register value which was originally copied
-vim.keymap.set("x", "p", [["_dP]])
+vim.keymap.set("x", "<leader>p", [["_dP]])
 
--- Next greatest remap ever : asbjornHaland
+-- Next greatest remap ever : asbjornHaland (copy selection into clipboard)
 vim.keymap.set({"n", "v"}, "<leader>y", [["+y]])
 vim.keymap.set("n", "<leader>Y", [["+Y]])
 
@@ -58,9 +58,6 @@ vim.keymap.set("n", "<leader>cc", ":cclose<CR>", opts)
 
 -- Basically black magic - replace the word the cursor is over
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
-
--- Copy selection into clipboard
-vim.keymap.set("v", "<leader>y", '"+y')
 
 -- Refresh buffers
 vim.keymap.set("n", "<F5>", ":checktime<CR>")
