@@ -3,9 +3,9 @@
 # Install Neovim release version
 echo "Installing Neovim"
 rm -rf $HOME/.local/bin/nvim
-wget -q https://github.com/neovim/neovim/releases/download/stable/nvim.appimage
-chmod u+x nvim.appimage
-mv nvim.appimage $HOME/.local/bin/nvim
+wget -q https://github.com/neovim/neovim/releases/download/stable/nvim-linux-x86_64.appimage
+chmod u+x nvim-linux-x86_64.appimage
+mv nvim-linux-x86_64.appimage $HOME/.local/bin/nvim
 
 # Install tree-sitter CLI (currently needed to generate LaTeX grammar)
 echo "Installing tree-sitter CLI"
@@ -19,7 +19,7 @@ mv tree-sitter-linux-x64 $HOME/.local/bin/tree-sitter
 echo "Setting up NERD fonts"
 FONTS_PATH=$HOME/.local/share/fonts
 mkdir -p $FONTS_PATH
-wget https://github.com/ryanoasis/nerd-fonts/releases/download/v2.2.2/3270.zip
+wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.4.0/3270.zip
 unzip -d $FONTS_PATH -q 3270.zip
 rm 3270.zip
 fc-cache -f

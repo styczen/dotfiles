@@ -40,16 +40,16 @@ return packer.startup(function(use)
         'nvim-treesitter/nvim-treesitter',
         run = ':TSUpdate'
     })
-    use('lewis6991/gitsigns.nvim')
+    -- use('lewis6991/gitsigns.nvim')
 
     -- LSP Support
-    use('neovim/nvim-lspconfig')
+    use({'neovim/nvim-lspconfig', tag = 'v2.1.0'})
     use('williamboman/mason.nvim')
     use('williamboman/mason-lspconfig.nvim')
-    use({
-        'jose-elias-alvarez/null-ls.nvim',
-        requires = { "nvim-lua/plenary.nvim" },
-    })
+    -- use({
+    --     'jose-elias-alvarez/null-ls.nvim',
+    --     requires = { "nvim-lua/plenary.nvim" },
+    -- })
 
     -- Autocompletion
     use('hrsh7th/nvim-cmp')
