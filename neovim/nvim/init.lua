@@ -3,9 +3,6 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
--- Set to true if you have a Nerd Font installed and selected in the terminal
-vim.g.have_nerd_font = true
-
 -- [[ Setting options ]]
 -- Make line numbers default
 vim.opt.number = true
@@ -172,39 +169,10 @@ require("lazy").setup({
       delay = 0,
       icons = {
         -- set icon mappings to true if you have a Nerd Font
-        mappings = vim.g.have_nerd_font,
+        mappings = true,
         -- If you are using a Nerd Font: set icons.keys to an empty table which will use the
         -- default which-key.nvim defined Nerd Font icons, otherwise define a string table
-        keys = vim.g.have_nerd_font and {} or {
-          Up = "<Up> ",
-          Down = "<Down> ",
-          Left = "<Left> ",
-          Right = "<Right> ",
-          C = "<C-…> ",
-          M = "<M-…> ",
-          D = "<D-…> ",
-          S = "<S-…> ",
-          CR = "<CR> ",
-          Esc = "<Esc> ",
-          ScrollWheelDown = "<ScrollWheelDown> ",
-          ScrollWheelUp = "<ScrollWheelUp> ",
-          NL = "<NL> ",
-          BS = "<BS> ",
-          Space = "<Space> ",
-          Tab = "<Tab> ",
-          F1 = "<F1>",
-          F2 = "<F2>",
-          F3 = "<F3>",
-          F4 = "<F4>",
-          F5 = "<F5>",
-          F6 = "<F6>",
-          F7 = "<F7>",
-          F8 = "<F8>",
-          F9 = "<F9>",
-          F10 = "<F10>",
-          F11 = "<F11>",
-          F12 = "<F12>",
-        },
+        keys = {},
       },
 
       -- Document existing key chains
@@ -331,8 +299,10 @@ require("lazy").setup({
       -- Useful status updates for LSP.
       { "j-hui/fidget.nvim",    opts = {} },
 
-      -- Allows extra capabilities provided by blink.cmp
-      "saghen/blink.cmp",
+      -- -- Allows extra capabilities provided by blink.cmp
+      -- "saghen/blink.cmp",
+      "hrsh7th/nvim-cmp",
+      "hrsh7th/cmp-nvim-lsp",
     },
     config = function()
       vim.api.nvim_create_autocmd("LspAttach", {
@@ -489,10 +459,7 @@ require("lazy").setup({
       })
 
       -- LSP servers and clients are able to communicate to each other what features they support.
-      --  By default, Neovim doesn't support everything that is in the LSP specification.
-      --  When you add blink.cmp, luasnip, etc. Neovim now has *more* capabilities.
-      --  So, we create new capabilities with blink.cmp, and then broadcast that to the servers.
-      local capabilities = require("blink.cmp").get_lsp_capabilities()
+      local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
       -- Enable the following language servers
       --  Feel free to add/remove any LSPs that you want here. They will automatically be installed.
@@ -525,41 +492,40 @@ require("lazy").setup({
 
         -- Python
         pylsp = {
-          settings = {
-            pylsp = {
-              skip_token_initialization = true,
-              configurationSources = { "flake8" },
-              plugins = {
-                -- Formatter
-                black = {
-                  enabled = true,
-                },
-                yapf = {
-                  enabled = false,
-                },
-                autopep8 = {
-                  enabled = false,
-                },
-                -- Linter
-                flake8 = {
-                  enabled = true,
-                  maxLineLength = 20,
-                  extendIgnore = {
-                    "E203",
-                  },
-                },
-                mccabe = {
-                  enabled = false,
-                },
-                pycodestyle = {
-                  enabled = false,
-                },
-                pyflakes = {
-                  enabled = false,
-                },
-              },
-            },
-          },
+          -- settings = {
+          --   pylsp = {
+          --     configurationSources = { "flake8" },
+          --     plugins = {
+          --       -- Formatter
+          --       black = {
+          --         enabled = true,
+          --       },
+          --       yapf = {
+          --         enabled = false,
+          --       },
+          --       autopep8 = {
+          --         enabled = false,
+          --       },
+          --       -- Linter
+          --       flake8 = {
+          --         enabled = true,
+          --         maxLineLength = 20,
+          --         extendIgnore = {
+          --           "E203",
+          --         },
+          --       },
+          --       mccabe = {
+          --         enabled = false,
+          --       },
+          --       pycodestyle = {
+          --         enabled = false,
+          --       },
+          --       pyflakes = {
+          --         enabled = false,
+          --       },
+          --     },
+          --   },
+          -- },
         },
 
         -- Lua
@@ -609,6 +575,7 @@ require("lazy").setup({
         automatic_installation = false,
         handlers = {
           function(server_name)
+            vim.notify("helllo")
             local server = servers[server_name] or {}
             -- This handles overriding only values explicitly passed
             -- by the server configuration above. Useful when disabling
@@ -621,145 +588,64 @@ require("lazy").setup({
     end,
   },
 
-  -- { -- Autoformat
-  --   "stevearc/conform.nvim",
-  --   event = { "BufWritePre" },
-  --   cmd = { "ConformInfo" },
-  --   keys = {
-  --     {
-  --       "<leader>f",
-  --       function()
-  --         require("conform").format({ async = true, lsp_format = "fallback" })
-  --       end,
-  --       mode = "",
-  --       desc = "[F]ormat buffer",
-  --     },
-  --   },
-  --   opts = {
-  --     notify_on_error = false,
-  --     format_on_save = function(bufnr)
-  --       -- Disable "format_on_save lsp_fallback" for languages that don't
-  --       -- have a well standardized coding style. You can add additional
-  --       -- languages here or re-enable it for the disabled ones.
-  --       local disable_filetypes = { c = true, cpp = true }
-  --       if disable_filetypes[vim.bo[bufnr].filetype] then
-  --         return nil
-  --       else
-  --         return {
-  --           timeout_ms = 500,
-  --           lsp_format = "fallback",
-  --         }
-  --       end
-  --     end,
-  --     formatters_by_ft = {
-  --       lua = { "stylua" },
-  --       -- Conform can also run multiple formatters sequentially
-  --       -- python = { "isort", "black" },
-  --       --
-  --       -- You can use 'stop_after_first' to run the first available formatter from the list
-  --       -- javascript = { "prettierd", "prettier", stop_after_first = true },
-  --     },
-  --   },
-  -- },
-
   -- Autocompletion
   {
-    "saghen/blink.cmp",
-    event = "VimEnter",
-    version = "1.*",
+    "hrsh7th/nvim-cmp",
+    lazy = false,
+    priority = 100,
     dependencies = {
-      -- Snippet Engine
-      {
-        "L3MON4D3/LuaSnip",
-        version = "2.*",
-        build = (function()
-          -- Build Step is needed for regex support in snippets.
-          -- This step is not supported in many windows environments.
-          -- Remove the below condition to re-enable on windows.
-          if vim.fn.has("win32") == 1 or vim.fn.executable("make") == 0 then
-            return
-          end
-          return "make install_jsregexp"
-        end)(),
-        dependencies = {
-          -- `friendly-snippets` contains a variety of premade snippets.
-          --    See the README about individual language/framework/plugin snippets:
-          --    https://github.com/rafamadriz/friendly-snippets
-          -- {
-          --   'rafamadriz/friendly-snippets',
-          --   config = function()
-          --     require('luasnip.loaders.from_vscode').lazy_load()
-          --   end,
-          -- },
-        },
-        opts = {},
-      },
-      "folke/lazydev.nvim",
+      "onsails/lspkind.nvim",
+      "hrsh7th/cmp-nvim-lsp",
+      "hrsh7th/cmp-path",
+      "hrsh7th/cmp-buffer",
+      { "L3MON4D3/LuaSnip", build = "make install_jsregexp" },
+      "saadparwaiz1/cmp_luasnip",
     },
-    --- @module 'blink.cmp'
-    --- @type blink.cmp.Config
-    opts = {
-      keymap = {
-        -- 'default' (recommended) for mappings similar to built-in completions
-        --   <c-y> to accept ([y]es) the completion.
-        --    This will auto-import if your LSP supports it.
-        --    This will expand snippets if the LSP sent a snippet.
-        -- 'super-tab' for tab to accept
-        -- 'enter' for enter to accept
-        -- 'none' for no mappings
-        --
-        -- For an understanding of why the 'default' preset is recommended,
-        -- you will need to read `:help ins-completion`
-        --
-        -- No, but seriously. Please read `:help ins-completion`, it is really good!
-        --
-        -- All presets have the following mappings:
-        -- <tab>/<s-tab>: move to right/left of your snippet expansion
-        -- <c-space>: Open menu or open docs if already open
-        -- <c-n>/<c-p> or <up>/<down>: Select next/previous item
-        -- <c-e>: Hide menu
-        -- <c-k>: Toggle signature help
-        --
-        -- See :h blink-cmp-config-keymap for defining your own keymap
-        preset = "default",
-
-        -- For more advanced Luasnip keymaps (e.g. selecting choice nodes, expansion) see:
-        --    https://github.com/L3MON4D3/LuaSnip?tab=readme-ov-file#keymaps
-      },
-
-      appearance = {
-        -- 'mono' (default) for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
-        -- Adjusts spacing to ensure icons are aligned
-        nerd_font_variant = "mono",
-      },
-
-      completion = {
-        -- By default, you may press `<c-space>` to show the documentation.
-        -- Optionally, set `auto_show = true` to show the documentation after a delay.
-        documentation = { auto_show = false, auto_show_delay_ms = 500 },
-      },
-
-      sources = {
-        default = { "lsp", "path", "snippets", "lazydev" },
-        providers = {
-          lazydev = { module = "lazydev.integrations.blink", score_offset = 100 },
-        },
-      },
-
-      snippets = { preset = "luasnip" },
-
-      -- Blink.cmp includes an optional, recommended rust fuzzy matcher,
-      -- which automatically downloads a prebuilt binary when enabled.
-      --
-      -- By default, we use the Lua implementation instead, but you may enable
-      -- the rust implementation via `'prefer_rust_with_warning'`
-      --
-      -- See :h blink-cmp-config-fuzzy for more information
-      fuzzy = { implementation = "lua" },
-
-      -- Shows a signature help window while you type arguments for a function
-      signature = { enabled = true },
-    },
+    config = function()
+      local cmp = require("cmp")
+      local luasnip = require("luasnip")
+      luasnip.config.setup()
+      cmp.setup(
+        {
+          snippet = {
+            expand = function(args)
+              luasnip.lsp_expand(args.body)
+            end,
+          },
+          mapping = cmp.mapping.preset.insert {
+            ['<C-j>'] = cmp.mapping.scroll_docs(4),
+            ['<C-k>'] = cmp.mapping.scroll_docs(-4),
+            ['<C-Space>'] = cmp.mapping.complete(),
+            ['<CR>'] = cmp.mapping.confirm {
+              behavior = cmp.ConfirmBehavior.Replace,
+              select = true,
+            },
+            ['<Tab>'] = cmp.mapping(function(fallback)
+              if cmp.visible() then
+                cmp.select_next_item()
+              elseif luasnip.expand_or_jumpable() then
+                luasnip.expand_or_jump()
+              else
+                fallback()
+              end
+            end, { 'i', 's' }),
+            ['<S-Tab>'] = cmp.mapping(function(fallback)
+              if cmp.visible() then
+                cmp.select_prev_item()
+              elseif luasnip.jumpable(-1) then
+                luasnip.jump(-1)
+              else
+                fallback()
+              end
+            end, { 'i', 's' }),
+          },
+          sources = {
+            { name = 'nvim_lsp' },
+            { name = 'luasnip' },
+          },
+        }
+      )
+    end,
   },
 
   -- Colorscheme (VSCode dark style)
@@ -899,20 +785,6 @@ require("lazy").setup({
   ui = {
     -- If you are using a Nerd Font: set icons to an empty table which will use the
     -- default lazy.nvim defined Nerd Font icons, otherwise define a unicode icons table
-    icons = vim.g.have_nerd_font and {} or {
-      cmd = "⌘",
-      config = "🛠",
-      event = "📅",
-      ft = "📂",
-      init = "⚙",
-      keys = "🗝",
-      plugin = "🔌",
-      runtime = "💻",
-      require = "🌙",
-      source = "📄",
-      start = "🚀",
-      task = "📌",
-      lazy = "💤 ",
-    },
+    icons = {},
   },
 })
