@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-sudo apt update && apt install -y \
+sudo apt update && sudo apt install -y \
 	make \
 	gcc \
 	ripgrep \
@@ -13,18 +13,18 @@ echo "Installing Neovim"
 sudo rm -rf /usr/local/bin/nvim
 rm -rf $HOME/.local/share/nvim
 wget -q https://github.com/neovim/neovim/releases/download/v0.11.1/nvim-linux-x86_64.appimage
-chmod u+x nvim-linux-x86_64.appimage
+chmod +x nvim-linux-x86_64.appimage
 sudo mv nvim-linux-x86_64.appimage /usr/local/bin/nvim
 
 echo "Linking NVIM configuration directory..."
-ln -s $PWD/nvim $HOME/.config/nvim
+ln -sf $PWD/nvim $HOME/.config/nvim
 
 # # Install tree-sitter CLI (currently needed to generate LaTeX grammar)
 # echo "Installing tree-sitter CLI"
 # rm -rf $HOME/.local/bin/tree-sitter
-# wget -q https://github.com/tree-sitter/tree-sitter/releases/download/v0.22.6/tree-sitter-linux-x64.gz
+# wget -q https://github.com/tree-sitter/tree-sitter/releases/download/v0.25.4/tree-sitter-linux-x64.gz
 # gzip -d tree-sitter-linux-x64.gz
-# chmod u+x tree-sitter-linux-x64
+# chmod +x tree-sitter-linux-x64
 # mv tree-sitter-linux-x64 $HOME/.local/bin/tree-sitter
 
 # Setup NERD fonts
@@ -32,15 +32,8 @@ echo "Setting up NERD fonts"
 FONTS_PATH=$HOME/.local/share/fonts
 mkdir -p $FONTS_PATH
 wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.4.0/3270.zip
-unzip -d $FONTS_PATH -q 3270.zip
+unzip -o -d $FONTS_PATH -q 3270.zip
 rm 3270.zip
 fc-cache -f
-
-# # Setup python-lsp-black
-# echo "Installing python-lsp-black plugin for Python LSP"
-# echo "Sourcing Python LSP venv..."
-# source $HOME/.local/share/nvim/mason/packages/python-lsp-server/venv/bin/activate
-# echo "Installing plugin..."
-# pip install python-lsp-black
 
 echo "Please restart terminal"

@@ -2,4 +2,5 @@
 
 rm -rf $HOME/.local/share/nvim
 rm -rf $HOME/.local/state/nvim
-rm -rf $HOME/.config/nvim/lazy-lock.json
+rm -rf $HOME/.config/nvim
+sudo rm /usr/local/bin/nvim
