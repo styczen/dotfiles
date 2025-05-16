@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -e
+
 # Setup python-lsp-black
 echo "Installing python-lsp-black plugin for Python LSP"
 echo "Sourcing Python LSP venv..."
