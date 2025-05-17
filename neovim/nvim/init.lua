@@ -107,7 +107,7 @@ vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper win
 -- vim.keymap.set("n", "<C-S-k>", "<C-w>K", { desc = "Move window to the upper" })
 
 vim.keymap.set("n", "<leader>e", vim.cmd.Explore, { desc = "Open [e]xplorer" })
-vim.keymap.set("n", "<leader>w", vim.cmd.write, { desc = "Open [e]xplorer" })
+vim.keymap.set("n", "<leader>w", vim.cmd.write, { desc = "[W]rite current buffer" })
 
 -- Insert --
 vim.keymap.set("i", "jk", "<ESC>")
