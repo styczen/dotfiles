@@ -3,4 +3,6 @@
 rm -rf $HOME/.local/share/nvim
 rm -rf $HOME/.local/state/nvim
 rm -rf $HOME/.config/nvim
+rm -rf $HOME/.local/share/fonts/nerd_fonts_3270
+fc-cache -f
 sudo rm -f /usr/local/bin/nvim
