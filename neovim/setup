@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 
+if command -v nvim >/dev/null 2>&1; then
+    echo "Neovim (nvim) is already installed. Skipping setup."
+    exit 0
+fi
+
 sudo apt update && sudo apt install -y \
 	make \
 	gcc \
@@ -10,22 +15,12 @@ sudo apt update && sudo apt install -y \
 
 # Install Neovim release version
 echo "Installing Neovim"
-sudo rm -rf /usr/local/bin/nvim
-rm -rf $HOME/.local/share/nvim
 wget -q https://github.com/neovim/neovim/releases/download/v0.11.1/nvim-linux-x86_64.appimage
 chmod +x nvim-linux-x86_64.appimage
 sudo mv nvim-linux-x86_64.appimage /usr/local/bin/nvim
 
 echo "Linking NVIM configuration directory..."
 ln -sf $PWD/nvim $HOME/.config/nvim
-
-# # Install tree-sitter CLI (currently needed to generate LaTeX grammar)
-# echo "Installing tree-sitter CLI"
-# rm -rf $HOME/.local/bin/tree-sitter
-# wget -q https://github.com/tree-sitter/tree-sitter/releases/download/v0.25.4/tree-sitter-linux-x64.gz
-# gzip -d tree-sitter-linux-x64.gz
-# chmod +x tree-sitter-linux-x64
-# mv tree-sitter-linux-x64 $HOME/.local/bin/tree-sitter
 
 # Setup NERD fonts
 echo "Setting up NERD fonts"
