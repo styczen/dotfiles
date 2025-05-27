@@ -428,6 +428,17 @@ require("lazy").setup({
       -- LSP servers and clients are able to communicate to each other what features they support.
       local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
+      local function get_num_cores()
+        local cores = 1 -- default fallback
+        local cpu_info = vim.uv.cpu_info()
+        if cpu_info and #cpu_info > 0 then
+          cores = #cpu_info
+        end
+        return cores
+      end
+      -- Use 80% of cores
+      local clangd_num_cores = math.max(1, math.floor(get_num_cores() * 0.8))
+
       -- Enable the following language servers
       local servers = {
         -- Rust
@@ -492,7 +503,9 @@ require("lazy").setup({
         },
 
         -- C++
-        clangd = {},
+        clangd = {
+          cmd = { "clangd", "-j", clangd_num_cores },
+        },
 
         -- LaTeX
         texlab = {
