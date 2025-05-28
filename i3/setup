@@ -29,6 +29,7 @@ ln -sf $PWD/lock-screen $HOME/.local/bin/lock-screen
 ln -sf $PWD/rofi-sound-output-chooser $HOME/.local/bin/rofi-sound-output-chooser
 ln -sf $PWD/finder $HOME/.local/share/rofi/finder
 ln -sf $PWD/tim-mccartney-39907.jpg $HOME/.local/share/backgrounds/tim-mccartney-39907.jpg
+ln -sf $PWD/prison_mike.jpg $HOME/.local/share/backgrounds/prison_mike.jpg
 
 # Investigate some sweet dmenu options to make screenshots and recordings:
 # https://github.com/yschaeff/sway_screenshots/blob/master/screenshot.sh
