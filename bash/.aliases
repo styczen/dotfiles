@@ -17,3 +17,6 @@ o3de_compile_commands() {
     cp build_without_unity/compile_commands.json $dst_dir
     rm -rf build_without_unity
 }
+
+# Make the Logitech mouse slower
+xinput set-prop "MX Vertical Mouse" "libinput Accel Speed" -0.5 &> /dev/null

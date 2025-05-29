@@ -102,6 +102,8 @@ vim.keymap.set("v", ">", ">gv")
 vim.keymap.set("v", "<S-j>", ":move '>+1<CR>gv=gv")
 vim.keymap.set("v", "<S-k>", ":move '<-2<CR>gv=gv")
 
+vim.keymap.set('n', 'gl', vim.diagnostic.open_float, { desc = "Open float" })
+
 -- [[ Basic Autocommands ]]
 vim.api.nvim_create_autocmd("TextYankPost", {
   desc = "Highlight when yanking (copying) text",
