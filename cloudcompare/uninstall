@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+rm -f $HOME/.local/bin/ccViewer
+rm -f $HOME/.local/bin/CloudCompare
+rm -rf $HOME/.local/lib/cloudcompare
+rm -rf $HOME/.local/share/cloudcompare

@@ -1,3 +1,28 @@
 #!/usr/bin/env bash
 
-sudo apt install -y cloudcompare
+VERSION=v2.13.2
+
+sudo apt-get install -y \
+    libqt5svg5-dev \
+    libqt5opengl5-dev \
+    qttools5-dev \
+    qttools5-dev-tools \
+    libqt5websockets5-dev \
+    liblaszip-dev
+
+git clone --recursive --branch $VERSION https://github.com/cloudcompare/CloudCompare.git
+
+pushd CloudCompare
+cmake \
+    -B build \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=$HOME/.local \
+    -DOPTION_USE_DXF_LIB=ON \
+    -DOPTION_USE_GDAL=ON \
+    -DOPTION_USE_SHAPE_LIB=ON \
+    -DPLUGIN_IO_QLAS=ON
+cmake --build build --parallel
+cmake --install build
+popd
+
+rm -rf CloudCompare
