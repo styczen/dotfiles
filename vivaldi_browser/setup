@@ -1,3 +1,6 @@
 #!/usr/bin/env bash
 
-sudo snap install vivaldi
+DEB_NAME=vivaldi-stable_7.4.3684.43-1_amd64.deb
+wget -q https://downloads.vivaldi.com/stable/$DEB_NAME
+sudo dpkg -i $DEB_NAME
+rm -f $DEB_NAME
