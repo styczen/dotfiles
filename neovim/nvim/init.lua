@@ -697,6 +697,7 @@ require("lazy").setup({
         "tmux",
         "csv",
         "toml",
+        "dockerfile",
       },
       -- Autoinstall languages that are not installed
       auto_install = true,
