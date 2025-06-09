@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -e
+
 VERSION=v2.13.2
 
 sudo apt-get install -y \
@@ -12,6 +14,13 @@ sudo apt-get install -y \
 
 git clone --recursive --branch $VERSION https://github.com/cloudcompare/CloudCompare.git
 
+# Download FBX SDK
+wget -O fbxsdk.tar.gz https://damassets.autodesk.net/content/dam/autodesk/www/files/fbx202037_fbxsdk_gcc_linux.tar.gz
+mkdir -p fbxsdk
+tar -xf fbxsdk.tar.gz -C fbxsdk
+./fbxsdk/fbx202037_fbxsdk_linux $PWD/fbxsdk
+
+# Build CC
 pushd CloudCompare
 cmake \
     -B build \
@@ -20,9 +29,13 @@ cmake \
     -DOPTION_USE_DXF_LIB=ON \
     -DOPTION_USE_GDAL=ON \
     -DOPTION_USE_SHAPE_LIB=ON \
-    -DPLUGIN_IO_QLAS=ON
+    -DPLUGIN_IO_QLAS=ON \
+    -DPLUGIN_IO_QFBX=ON \
+    -DFBX_SDK_INCLUDE_DIR=$PWD/../fbxsdk/include \
+    -DFBX_SDK_LIBRARY_FILE=$PWD/../fbxsdk/lib/release/libfbxsdk.a
 cmake --build build --parallel
 cmake --install build
 popd
 
-rm -rf CloudCompare
+rm -rf CloudCompare 
+rm -rf fbxsdk*
