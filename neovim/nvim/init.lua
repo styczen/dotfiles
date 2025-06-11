@@ -721,6 +721,7 @@ require("lazy").setup({
     build = "make tiktoken",
     opts = {
       model = "claude-sonnet-4",
+      chat_autocomplete = true,
     },
   },
 }, {
