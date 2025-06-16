@@ -309,6 +309,9 @@ require("lazy").setup({
           -- or a suggestion from your LSP for this to activate.
           map("gra", vim.lsp.buf.code_action, "[G]oto Code [A]ction", { "n", "x" })
 
+          -- Show the signature of the function under your cursor.
+          map("<C-k>", vim.lsp.buf.signature_help, "Signature help")
+
           -- Find references for the word under your cursor.
           map("grr", require("telescope.builtin").lsp_references, "[G]oto [R]eferences")
 
