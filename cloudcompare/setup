@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# TODO: Add MeshIO plugin: https://github.com/asmaloney/MeshIO
+
 set -e
 
 VERSION=v2.13.2
