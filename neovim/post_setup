@@ -2,9 +2,11 @@
 
 set -e
 
-# Setup python-lsp-black
-echo "Installing python-lsp-black plugin for Python LSP"
 echo "Sourcing Python LSP venv..."
 source $HOME/.local/share/nvim/mason/packages/python-lsp-server/venv/bin/activate
-echo "Installing plugin..."
+
+echo "Installing python-lsp-black plugin for Python LSP"
 pip install python-lsp-black
+
+echo "Installing python-lsp-ruff plugin for Python LSP"
+pip install python-lsp-ruff
