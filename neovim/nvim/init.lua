@@ -48,6 +48,9 @@ vim.opt.scrolloff = 10
 -- See `:help 'confirm'`
 vim.opt.confirm = true
 
+-- Allow Copilot pluging to change suggestion acceptance keymap
+vim.g.copilot_no_tab_map = true
+
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
 
@@ -103,6 +106,12 @@ vim.keymap.set("v", "<S-j>", ":move '>+1<CR>gv=gv")
 vim.keymap.set("v", "<S-k>", ":move '<-2<CR>gv=gv")
 
 vim.keymap.set('n', 'gl', vim.diagnostic.open_float, { desc = "Open float" })
+
+-- Define keymap to accept current Copilot suggestion
+vim.keymap.set('i', '<C-J>', 'copilot#Accept("\\<CR>")', {
+  expr = true,
+  replace_keycodes = false
+})
 
 -- [[ Basic Autocommands ]]
 vim.api.nvim_create_autocmd("TextYankPost", {
