@@ -1,10 +1,9 @@
 #!/usr/bin/env bash
 
-if [ -f BASHRC_UPDATED ]; then
-    echo "Bashrc already updated"
+if grep -q "source $PWD/.settings" $HOME/.bashrc; then
+    echo ".bashrc already updated"
     exit 0
 fi
 
-echo "source $PWD/.aliases" >> $HOME/.bashrc
+echo "source $PWD/.settings" >> $HOME/.bashrc
 source $HOME/.bashrc
-touch BASHRC_UPDATED
