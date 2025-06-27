@@ -51,6 +51,20 @@ vim.opt.confirm = true
 -- Allow Copilot pluging to change suggestion acceptance keymap
 vim.g.copilot_no_tab_map = true
 
+-- Highlight file types
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+  pattern = { "*.urdf", "*.sdf" },
+  callback = function()
+    vim.bo.filetype = "xml"
+  end,
+})
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+  pattern = { "*.setreg" },
+  callback = function()
+    vim.bo.filetype = "json"
+  end,
+})
+
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
 
