@@ -16,7 +16,7 @@ o3de_compile_commands() {
 }
 
 # Make the Logitech mouse slower
-xinput set-prop "MX Vertical Mouse" "libinput Accel Speed" -0.5 &> /dev/null
+xinput set-prop "MX Vertical Mouse" "libinput Accel Speed" -0.75 &> /dev/null
 
 # Eternal bash history.
 # ---------------------
