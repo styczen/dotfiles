@@ -710,6 +710,7 @@ require("lazy").setup({
         "cpp",
         "tsx",
         "json",
+        "json5",
         "cmake",
         "xml",
         "typescript",
