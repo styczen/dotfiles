@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+mkdir -p $HOME/.config/systemd/user
+
+git clone git@github.com:styczen/pomodoro.git
+pushd pomodoro
+ln -sf $PWD/pomodoro.py $HOME/.local/bin/pomodoro
+ln -sf $PWD/systemd/pomodoro.service $HOME/.config/systemd/user/pomodoro.service
+popd
+systemctl --user daemon-reload
+systemctl --user start pomodoro.service
+systemctl --user enable pomodoro.service

@@ -24,6 +24,7 @@ mkdir -p $HOME/.local/share/backgrounds
 ln -sf $PWD/config $HOME/.config/i3/config
 ln -sf $PWD/i3status.conf $HOME/.config/i3/i3status.conf
 ln -sf $PWD/i3unityfix.py $HOME/.local/bin/i3unityfix
+ln -sf $PWD/i3_pomodoro.py $HOME/.local/bin/i3_pomodoro
 ln -sf $PWD/monitor-layout $HOME/.local/bin/monitor-layout
 ln -sf $PWD/lock-screen $HOME/.local/bin/lock-screen
 ln -sf $PWD/rofi-sound-output-chooser $HOME/.local/bin/rofi-sound-output-chooser
