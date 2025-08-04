@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+
+START_POMODORO="🍅 Start pomodoro"
+STOP_POMODORO="🛑 Stop pomodoro"
+SET_DURATION="⏰ Set duration "
+
+OPTIONS="$START_POMODORO\n$STOP_POMODORO\n$SET_DURATION"
+
+# Show menu and get selected option
+SELECTED=$(echo -e "$OPTIONS" | rofi -dmenu -p "Pomodoro:")
+
+case "$SELECTED" in
+    $START_POMODORO)
+        echo "Pomodoro started!"
+        pomodoro client start
+        ;;
+    $STOP_POMODORO)
+        echo "Pomodoro stopped!"
+        pomodoro client stop
+        ;;
+    $SET_DURATION)
+        # Prompt the user for duration in minutes
+        DURATION=$(rofi -dmenu -p "Enter duration (minutes):")
+        if [[ "$DURATION" =~ ^[0-9]+$ ]]; then
+            echo "Pomodoro duration set to $DURATION minutes."
+            pomodoro client duration $DURATION
+        else
+            echo "Invalid duration entered."
+        fi
+        ;;
+    *)
+        echo "No valid option selected."
+        ;;
+esac

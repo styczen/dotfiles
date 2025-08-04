@@ -240,3 +240,6 @@ exec --no-startup-id "setxkbmap -option ctrl:nocaps"
 
 # Sound output chooser
 bindsym $mod+Control+s exec --no-startup-id rofi -show rofi-sound -modi "rofi-sound:rofi-sound-output-chooser"
+
+# Pomodoro timer
+bindsym $mod+p exec --no-startup-id "$HOME/.local/bin/rofi-pomodoro"
