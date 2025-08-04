@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+
+set -e
+
+sudo apt-get install -y \
+    cmake \
+    g++ \
+    pkg-config \
+    libfontconfig1-dev \
+    libxcb-xfixes0-dev \
+    libxkbcommon-dev \
+    python3
+
+git clone https://github.com/alacritty/alacritty.git -b v0.15.1
+pushd alacritty
+cargo build --release
+cp target/release/alacritty $HOME/.local/bin
+popd
+rm -rf alacritty
+
+# Alacritty themes
+mkdir -p $HOME/.config/alacritty/themes
+git clone https://github.com/alacritty/alacritty-theme $HOME/.config/alacritty/themes
+
+ln -sf $PWD/alacritty.toml $HOME/.config/alacritty/alacritty.toml
