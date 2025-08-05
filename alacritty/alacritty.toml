@@ -1,10 +1,7 @@
 [general]
 import = [
-    "~/.config/alacritty/themes/themes/gnome_terminal.toml",
+    "~/.config/alacritty/themes/themes/grubbox_dark.toml",
 ]
 
 [font]
 size = 15
-
-[colors]
-primary.background = "#000000"
