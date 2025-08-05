@@ -11,27 +11,19 @@ sudo apt-get install -y \
     brightnessctl \
     maim \
     playerctl \
-    rofi \
     gnome-screenshot \
     picom
 
 pip3 install i3ipc pynput
 
 mkdir -p $HOME/.config/i3
-mkdir -p $HOME/.config/rofi
-mkdir -p $HOME/.local/share/rofi
 mkdir -p $HOME/.local/share/backgrounds
 
 ln -sf $PWD/config $HOME/.config/i3/config
-ln -sf $PWD/rofi_config.rasi $HOME/.config/rofi/config.rasi
 ln -sf $PWD/i3status.conf $HOME/.config/i3/i3status.conf
 ln -sf $PWD/i3unityfix.py $HOME/.local/bin/i3unityfix
 ln -sf $PWD/i3_pomodoro.py $HOME/.local/bin/i3_pomodoro
-ln -sf $PWD/monitor-layout $HOME/.local/bin/monitor-layout
 ln -sf $PWD/lock-screen $HOME/.local/bin/lock-screen
-ln -sf $PWD/rofi-sound-output-chooser $HOME/.local/bin/rofi-sound-output-chooser
-ln -sf $PWD/rofi-pomodoro $HOME/.local/bin/rofi-pomodoro
-ln -sf $PWD/finder $HOME/.local/share/rofi/finder
 ln -sf $PWD/tim-mccartney-39907.jpg $HOME/.local/share/backgrounds/tim-mccartney-39907.jpg
 ln -sf $PWD/prison_mike.jpg $HOME/.local/share/backgrounds/prison_mike.jpg
 
