@@ -23,7 +23,7 @@ case "$SELECTED" in
         DURATION=$(rofi -dmenu -p "Enter duration (minutes)")
         if [[ "$DURATION" =~ ^[0-9]+$ ]]; then
             echo "Pomodoro duration set to $DURATION minutes."
-            pomodoro client duration $DURATION
+            pomodoro client duration --minutes $DURATION
         else
             echo "Invalid duration entered."
         fi
