@@ -3,4 +3,5 @@
 FILE_NAME="zen.linux-x86_64.tar.xz"
 wget -q https://github.com/zen-browser/desktop/releases/latest/download/$FILE_NAME
 sudo tar -xf $FILE_NAME -C /opt
+sudo ln -sf /opt/zen/zen /usr/local/bin/zen
 rm -f $FILE_NAME
