@@ -165,6 +165,11 @@ require("lazy").setup({
         topdelete = { text = "‾" },
         changedelete = { text = "~" },
       },
+      on_attach = function(bufnr)
+        if vim.tbl_contains({ "netrw", "dirvish" }, vim.bo[bufnr].filetype) then
+          return false ---@diagnostic disable-line: redundant-return-value
+        end
+      end,
     },
   },
 
