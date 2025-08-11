@@ -635,26 +635,11 @@ require("lazy").setup({
     end,
   },
 
-  -- {
-  --   "ellisonleao/gruvbox.nvim",
-  --   priority = 1000,
-  --   config = function()
-  --     vim.cmd.colorscheme("gruvbox")
-  --   end,
-  -- },
-
   {
-    "Mofiqul/vscode.nvim",
+    "ellisonleao/gruvbox.nvim",
     priority = 1000,
     config = function()
-      local c = require("vscode.colors").get_colors()
-      require("vscode").setup({
-        style = "dark",
-        group_overrides = {
-          NormalFloat = { bg = c.vscContext },
-        }
-      })
-      vim.cmd.colorscheme("vscode")
+      vim.cmd.colorscheme("gruvbox")
     end,
   },
 
