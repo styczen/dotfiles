@@ -65,7 +65,7 @@ bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
 # bindsym $mod+d exec --no-startup-id dmenu_run
-bindsym $mod+d exec --no-startup-id "rofi -show combi -combi-modi drun,run -modi combi -show-icons"
+bindsym $mod+d exec --no-startup-id "rofi -show combi -combi-modi drun,run -modi combi -show-icons -combi-hide-mode-prefix"
 # TODO: I think it does not work...
 # bindsym $mod+o exec --no-startup-id "rofi -show find -modi find:~/.local/share/rofi/finder"
 
