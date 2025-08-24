@@ -505,6 +505,7 @@ require("lazy").setup({
                   extendIgnore = {
                     "E203",
                   },
+                  exclude = { "/usr/*", "/opt/*" },
                 },
                 mccabe = {
                   enabled = false,
