@@ -5,6 +5,7 @@ import json
 import time
 import socket
 import sys
+import subprocess
 
 
 class State(Enum):
@@ -67,6 +68,7 @@ if __name__ == "__main__":
     # log_to_file(line)
     print_line(line)
 
+    notification_sent = False
     while True:
         line, prefix = read_line(), ""
         # ignore comma at start of lines
@@ -78,26 +80,27 @@ if __name__ == "__main__":
             color = "#ff0000"
         elif state == State.FINISHED:
             color = "#00ff00"
+            if not notification_sent:
+                notification_sent = True
+                subprocess.run(
+                    [
+                        "notify-send",
+                        "--urgency",
+                        "normal",
+                        "--expire-time",
+                        "0",
+                        "Pomodoro finished!",
+                    ]
+                )
         else:
+            notification_sent = False
             color = "#ffffff"
         # log_to_file(status_line)
         obj = {
             "full_text": status_line,
             "color": color,
-            # "background": "#1c1c1c",
-            # "border": "#ff00ff",
-            # "border_top": 1,
-            # "border_right": 1,
-            # "border_bottom": 1,
-            # "border_left": 1,
-            # "min_width": 300,
             "align": "center",
             "urgent": False,
-            # "name": "ethernet",
-            # "instance": "eth0",
-            # "separator": True,
-            # "separator_block_width": 9,
-            # "markup": "none",
         }
         j = json.loads(line)
         j.insert(0, obj)
