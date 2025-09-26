@@ -8,5 +8,5 @@ source $HOME/.local/share/nvim/mason/packages/python-lsp-server/venv/bin/activat
 echo "Installing python-lsp-black plugin for Python LSP"
 pip install python-lsp-black
 
-echo "Installing python-lsp-ruff plugin for Python LSP"
-pip install python-lsp-ruff
+# echo "Installing python-lsp-ruff plugin for Python LSP"
+# pip install python-lsp-ruff
