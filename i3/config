@@ -227,7 +227,7 @@ bindsym Print exec --no-startup-id gnome-screenshot -i
 exec_always --no-startup-id i3unityfix &
 
 # Picom
-exec_always --no-startup-id picom 
+exec_always --no-startup-id picom --vsync
 
 # General GNOME settings
 exec --no-startup-id gnome-settings-daemon
