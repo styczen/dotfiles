@@ -1,0 +1,58 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+ALAC="$HOME/.config/alacritty"
+FONT_HI="${FONT_HI:-$ALAC/font_high_dpi.toml}"   # used when DPI >= THRESHOLD
+FONT_LO="${FONT_LO:-$ALAC/font_low_dpi.toml}"   # used when DPI <  THRESHOLD
+LINK="${LINK:-$ALAC/font.toml}"                # imported by alacritty.toml
+THRESHOLD="${THRESHOLD:-120}"                  # DPI cutoff
+
+# --- Hard fail if required files are missing ---
+for f in "$FONT_HI" "$FONT_LO"; do
+  if [[ ! -f "$f" ]]; then
+    echo "Error: required font config not found: $f" >&2
+    echo "Create it (e.g. with [font].size = 13/15) and rerun." >&2
+    exit 2
+  fi
+done
+
+# --- Find output of focused workspace (older i3 has no .focused on outputs) ---
+FOC_WS=$(i3-msg -t get_workspaces | jq -r '.[] | select(.focused).name')
+FOC_OUT=$(i3-msg -t get_outputs | jq -r --arg ws "$FOC_WS" \
+  '.[] | select(.active and .current_workspace == $ws) | .name')
+
+# --- Compute DPI for that output using xrandr --listmonitors ---
+# Example token: 1920/294x1080/165+0+0
+DPI=$(xrandr --listmonitors | awk -v out="$FOC_OUT" '
+  $0 ~ (" " out "($| )") {
+    for (i=1;i<=NF;i++) {
+      if ($i ~ /^[0-9]+\/[0-9]+x[0-9]+\/[0-9]+\+/) {
+        n=split($i,a,/[/x+]/);
+        if (n>=4) {
+          w=a[1]+0; wmm=a[2]+0; h=a[3]+0; hmm=a[4]+0;
+          if (w>0 && h>0 && wmm>0 && hmm>0) {
+            dpi=( w/(wmm/25.4) + h/(hmm/25.4) )/2;
+            printf("%d\n", dpi + 0.5);
+            exit
+          }
+        }
+      }
+    }
+  }
+')
+if [[ -z "${DPI:-}" ]]; then
+  echo "Error: could not parse DPI for output '$FOC_OUT' from xrandr --listmonitors." >&2
+  exit 4
+fi
+
+echo $FOC_WS
+echo $FOC_OUT
+echo $DPI
+
+if (( DPI < THRESHOLD )); then
+    ln -sf "$FONT_LO" "$LINK"
+else
+    ln -sf "$FONT_HI" "$LINK"
+fi
+
+exec alacritty "$@"

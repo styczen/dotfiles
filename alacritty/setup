@@ -22,4 +22,8 @@ rm -rf alacritty
 mkdir -p $HOME/.config/alacritty/themes
 git clone https://github.com/alacritty/alacritty-theme $HOME/.config/alacritty/themes
 
+ln -sf $PWD/alacritty-auto-font $HOME/.local/bin/alacritty-auto-font
+
 ln -sf $PWD/alacritty.toml $HOME/.config/alacritty/alacritty.toml
+ln -sf $PWD/font_high_dpi.toml $HOME/.config/alacritty/font_high_dpi.toml
+ln -sf $PWD/font_low_dpi.toml $HOME/.config/alacritty/font_low_dpi.toml
