@@ -1,9 +1,11 @@
 #!/usr/bin/env bash
 
 # Install dependencies
-# jq - JSON processor
+# jq - JSON process
+# libxml2-utils - XML utilitiesor
 sudo apt-get update && sudo apt-get install -y \
     jq \
+    libxml2-utils \
     g++ \
     python3-venv \
     python3-pip \
