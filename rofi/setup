@@ -9,5 +9,5 @@ mkdir -p $HOME/.local/share/rofi
 ln -sf $PWD/config.rasi $HOME/.config/rofi/config.rasi
 ln -sf $PWD/monitor-layout $HOME/.local/bin/monitor-layout
 ln -sf $PWD/rofi-sound-output-chooser $HOME/.local/bin/rofi-sound-output-chooser
-ln -sf $PWD/rofi-pomodoro $HOME/.local/bin/rofi-pomodoro
+# ln -sf $PWD/rofi-pomodoro $HOME/.local/bin/rofi-pomodoro
 ln -sf $PWD/finder $HOME/.local/share/rofi/finder

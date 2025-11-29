@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+wget -q https://github.com/pythops/bluetui/releases/download/v0.8.0/bluetui-x86_64-linux-gnu
+chmod +x bluetui-x86_64-linux-gnu
+mv bluetui-x86_64-linux-gnu $HOME/.local/bin/bluetui

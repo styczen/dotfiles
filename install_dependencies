@@ -20,4 +20,5 @@ sudo apt-get update && sudo apt-get install -y \
     tree \
     gimp \
     snapd \
-    ffmpeg
+    ffmpeg \
+    pulseaudio

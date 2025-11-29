@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+sudo mkdir -p /etc/X11/xorg.conf.d
+sudo ln -sf $PWD/30-touchpad.conf /etc/X11/xorg.conf.d/30-touchpad.conf

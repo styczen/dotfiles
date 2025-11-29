@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 
-# maim - screenshots
 # playerctl - media controls (pause, play, next, previous)
 # brightnessctl - screen brightness control
 sudo apt-get install -y \
@@ -9,7 +8,6 @@ sudo apt-get install -y \
     feh \
     ripgrep \
     brightnessctl \
-    maim \
     playerctl \
     gnome-screenshot \
     picom
@@ -21,11 +19,9 @@ mkdir -p $HOME/.local/share/backgrounds
 
 ln -sf $PWD/config $HOME/.config/i3/config
 ln -sf $PWD/i3status.conf $HOME/.config/i3/i3status.conf
-ln -sf $PWD/i3unityfix.py $HOME/.local/bin/i3unityfix
-ln -sf $PWD/i3_pomodoro.py $HOME/.local/bin/i3_pomodoro
+# ln -sf $PWD/i3unityfix.py $HOME/.local/bin/i3unityfix
+# ln -sf $PWD/i3_pomodoro.py $HOME/.local/bin/i3_pomodoro
 ln -sf $PWD/lock-screen $HOME/.local/bin/lock-screen
-ln -sf $PWD/tim-mccartney-39907.jpg $HOME/.local/share/backgrounds/tim-mccartney-39907.jpg
-ln -sf $PWD/prison_mike.jpg $HOME/.local/share/backgrounds/prison_mike.jpg
 
 # Investigate some sweet dmenu options to make screenshots and recordings:
 # https://github.com/yschaeff/sway_screenshots/blob/master/screenshot.sh
