@@ -11,12 +11,12 @@ sudo apt-get install -y \
     libxkbcommon-dev \
     python3
 
+rm -rf alacritty
 git clone https://github.com/alacritty/alacritty.git -b v0.15.1
 pushd alacritty
 cargo build --release
 cp target/release/alacritty $HOME/.local/bin
 popd
-rm -rf alacritty
 
 # Alacritty themes
 mkdir -p $HOME/.config/alacritty/themes

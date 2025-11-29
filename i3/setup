@@ -14,7 +14,7 @@ sudo apt-get install -y \
     gnome-screenshot \
     picom
 
-pip3 install i3ipc pynput
+sudo apt-get install -y python3-i3ipc python3-pynput
 
 mkdir -p $HOME/.config/i3
 mkdir -p $HOME/.local/share/backgrounds
