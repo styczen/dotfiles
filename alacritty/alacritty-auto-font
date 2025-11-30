@@ -1,6 +1,10 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+# Disable X11 DPI scaling in Alacritty/winit.
+# This ensures only the font.size in your config matters, not Xft.dpi or gsd-xsettings.
+export WINIT_X11_SCALE_FACTOR=1.0
+
 ALAC="$HOME/.config/alacritty"
 FONT_HI="${FONT_HI:-$ALAC/font_high_dpi.toml}"   # used when DPI >= THRESHOLD
 FONT_LO="${FONT_LO:-$ALAC/font_low_dpi.toml}"   # used when DPI <  THRESHOLD

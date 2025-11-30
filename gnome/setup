@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# You can override these when calling the script:
+#   ./setup-gnome-theme.sh Arc-Dark Papirus-Dark
+GTK_THEME="${1:-Adwaita-dark}"
+ICON_THEME="${2:-Adwaita}"
+
+echo "Installing GNOME theme dependencies..."
+sudo apt-get update
+sudo apt-get install -y \
+    gnome-themes-extra \
+    gsettings-desktop-schemas \
+    gnome-settings-daemon
+
+echo "Configuring GNOME/GTK theme settings..."
+gsettings set org.gnome.desktop.interface gtk-theme "${GTK_THEME}"
+gsettings set org.gnome.desktop.interface icon-theme "${ICON_THEME}"
+gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
+
+echo "Ensuring libadwaita apps ignore portals and respect gsettings..."
+if ! grep -q '^ADW_DISABLE_PORTAL=1$' /etc/environment; then
+    echo 'ADW_DISABLE_PORTAL=1' | sudo tee -a /etc/environment
+fi
+
+echo "Done. Log out and log back in for ADW_DISABLE_PORTAL to take effect."
+echo "Current settings:"
+gsettings get org.gnome.desktop.interface gtk-theme
+gsettings get org.gnome.desktop.interface icon-theme
+gsettings get org.gnome.desktop.interface color-scheme
