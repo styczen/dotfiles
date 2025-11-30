@@ -43,8 +43,7 @@ bindsym XF86MonBrightnessDown exec brightnessctl s 5%-
 floating_modifier $mod
 
 # start a terminal
-# bindsym $mod+Return exec --no-startup-id alacritty-auto-font
-bindsym $mod+Return exec --no-startup-id $HOME/.local/bin/alacritty-auto-font 2> $HOME/.alacritty-auto-font.log
+bindsym $mod+Return exec --no-startup-id alacritty-auto-font
 
 # kill focused window
 bindsym $mod+Shift+q kill
