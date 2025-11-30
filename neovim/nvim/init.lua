@@ -484,9 +484,6 @@ require("lazy").setup({
         -- Rust
         rust_analyzer = {},
 
-        -- Javascript/Typescript
-        ts_ls = {},
-
         -- Python
         pylsp = {
           settings = {
