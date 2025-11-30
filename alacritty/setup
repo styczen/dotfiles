@@ -17,6 +17,7 @@ pushd alacritty
 cargo build --release
 cp target/release/alacritty $HOME/.local/bin
 popd
+rm -rf alacritty
 
 # Alacritty themes
 mkdir -p $HOME/.config/alacritty/themes

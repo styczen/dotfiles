@@ -30,5 +30,3 @@ wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.4.0/3270.zip
 unzip -o -d $FONTS_PATH -q 3270.zip
 rm 3270.zip
 fc-cache -f
-
-echo "Please restart terminal"
