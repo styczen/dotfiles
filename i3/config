@@ -44,7 +44,7 @@ floating_modifier $mod
 
 # start a terminal
 # bindsym $mod+Return exec --no-startup-id alacritty-auto-font
-bindsym $mod+Return exec --no-startup-id $HOME/.local/bin/alacritty-auto-font
+bindsym $mod+Return exec --no-startup-id $HOME/.local/bin/alacritty-auto-font 2> $HOME/.alacritty-auto-font.log
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -202,3 +202,6 @@ exec --no-startup-id setxkbmap -option ctrl:nocaps
 
 # Sound output chooser
 bindsym $mod+Control+s exec --no-startup-id rofi -show rofi-sound -modi "rofi-sound:rofi-sound-output-chooser"
+
+default_border pixel 1
+default_floating_border normal

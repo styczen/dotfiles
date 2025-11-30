@@ -1,11 +1,26 @@
 #!/usr/bin/env bash
+set -euo pipefail
 
-rm -f $HOME/.bashrc
-rm -f $HOME/.bash_profile
-rm -f $HOME/.profile
-rm -f $HOME/.bash_aliases
-rm -f $HOME/.bash_exports
-rm -f $HOME/.bash_functions
+BACKUP_DIR=$HOME/bash_backup
+BACKUP_SUFFIX=".backup.$(date +%Y%m%d%H%M%S)"
 
-ln -sf $PWD/.bashrc $HOME/.bashrc
-ln -sf $PWD/.bash_profile $HOME/.bash_profile
+mkdir -p $BACKUP_DIR
+
+backup_if_exists() {
+    local target="$1"
+    local full_target="${HOME}/${target}"
+    if [ -e "$full_target" ] && [ ! -L "$full_target" ]; then
+        local target_path="${BACKUP_DIR}/${target}${BACKUP_SUFFIX}"
+        mv "$full_target" "$target_path"
+        echo "Backed up $full_target -> ${target_path}"
+    fi
+}
+
+# Files you want to manage
+for f in .bashrc .bash_profile .profile .bash_aliases .bash_exports .bash_functions; do
+    backup_if_exists "$f"
+    rm -f "$HOME/$f"
+done
+
+ln -sfn "$PWD/.bashrc" "$HOME/.bashrc"
+ln -sfn "$PWD/.profile" "$HOME/.profile"

@@ -65,11 +65,3 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
-
-########## PATH / Tools ##########
-
-# Put ~/.local/bin at front
-export PATH="$HOME/.local/bin:$PATH"
-
-# Cargo / Rust
-[[ -f "$HOME/.cargo/env" ]] && . "$HOME/.cargo/env"
