@@ -10,7 +10,8 @@ sudo apt-get install -y \
     brightnessctl \
     playerctl \
     gnome-screenshot \
-    picom
+    picom \
+    dunst
 
 sudo apt-get install -y python3-i3ipc python3-pynput
 

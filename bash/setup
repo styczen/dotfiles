@@ -1,9 +1,11 @@
 #!/usr/bin/env bash
 
-if grep -q "source $PWD/.settings" $HOME/.bashrc; then
-    echo ".bashrc already updated"
-    exit 0
-fi
+rm -f $HOME/.bashrc
+rm -f $HOME/.bash_profile
+rm -f $HOME/.profile
+rm -f $HOME/.bash_aliases
+rm -f $HOME/.bash_exports
+rm -f $HOME/.bash_functions
 
-echo "source $PWD/.settings" >> $HOME/.bashrc
-source $HOME/.bashrc
+ln -sf $PWD/.bashrc $HOME/.bashrc
+ln -sf $PWD/.bash_profile $HOME/.bash_profile

@@ -7,27 +7,7 @@ mkdir -p $HOME/.config
 mkdir -p $HOME/work
 mkdir -p $HOME/personal
 
-if [ ! -f PATH_UPDATED ]; then
-    echo "PATH=$PATH:$HOME/.local/bin" >> ~/.bashrc
-    touch PATH_UPDATED
-fi
-
 ./install_dependencies
-
-./rust/setup
-
-for i in */; do
-    echo "Running setup for $PWD/$i"
-    cd "$i"
-
-    if [ -f "SETUP_IGNORE" ]; then
-        echo "Skipping setup for $PWD because SETUP_IGNORE is present"
-    elif [ -f "setup" ]; then
-        ./setup
-    fi
-
-    cd ..
-done
 
 # There is issue with brightnessctl for new Ubuntu:
 # https://github.com/Hummer12007/brightnessctl/issues/63#issuecomment-921753747
