@@ -2,7 +2,7 @@
 set -euo pipefail
 
 # You can override these when calling the script:
-#   ./setup-gnome-theme.sh Arc-Dark Papirus-Dark
+#   ./setup Arc-Dark Papirus-Dark
 GTK_THEME="${1:-Adwaita-dark}"
 ICON_THEME="${2:-Adwaita}"
 
@@ -17,6 +17,7 @@ echo "Configuring GNOME/GTK theme settings..."
 gsettings set org.gnome.desktop.interface gtk-theme "${GTK_THEME}"
 gsettings set org.gnome.desktop.interface icon-theme "${ICON_THEME}"
 gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
+gsettings set org.gnome.desktop.interface text-scaling-factor 1.25
 
 echo "Ensuring libadwaita apps ignore portals and respect gsettings..."
 if ! grep -q '^ADW_DISABLE_PORTAL=1$' /etc/environment; then
