@@ -20,4 +20,6 @@ sudo apt-get update && sudo apt-get install -y \
     gimp \
     snapd \
     ffmpeg \
-    pulseaudio
+    pulseaudio \
+    cmake \
+    cmake-qt-gui
