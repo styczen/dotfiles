@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+sudo apt-get install -y \
+    picom
+
+mkdir -p $HOME/.config/picom
+
+ln -sf $PWD/picom.conf $HOME/.config/picom/picom.conf
