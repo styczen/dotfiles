@@ -1,0 +1,34 @@
+# Fix Spotify fullscreen
+alias fix_spotify='sed -i "/\b\(app.window.position\)\b/d" -- $HOME/.config/spotify/prefs'
+
+# user@host:dir with nice colors
+PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\W\[\033[00m\]\$ '
+
+# Temporary fix to turn on built in display
+alias fix_display='xrandr --output eDP-1-1 --auto'
+
+# O3DE - generate compile_commands.json file
+o3de_compile_commands() {
+    local dst_dir=${1:-"."}
+    cmake -B build_without_unity -G "Ninja Multi-Config" -DLY_UNITY_BUILD=OFF -DCMAKE_EXPORT_COMPILE_COMMANDS=1
+    cp build_without_unity/compile_commands.json $dst_dir
+    rm -rf build_without_unity
+}
+
+# # Make the Logitech mouse slower
+# xinput set-prop "MX Vertical Mouse" "libinput Accel Speed" -0.75 &> /dev/null
+
+# Eternal bash history.
+# ---------------------
+# Undocumented feature which sets the size to "unlimited".
+# https://stackoverflow.com/questions/9457233/unlimited-bash-history
+HISTFILESIZE=
+HISTSIZE=
+HISTTIMEFORMAT="%F %T "
+HISTCONTROL=ignoreboth
+# Change the file location because certain bash sessions truncate .bash_history file upon close.
+# http://superuser.com/questions/575479/bash-history-truncated-to-500-lines-on-each-login
+HISTFILE=$HOME/.bash_eternal_history
+# Force prompt to write history after every command.
+# http://superuser.com/questions/20900/bash-history-loss
+PROMPT_COMMAND="history -a; $PROMPT_COMMAND"

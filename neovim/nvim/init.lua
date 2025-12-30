@@ -707,18 +707,18 @@ require("lazy").setup({
     },
   },
 
-  {
-    "CopilotC-Nvim/CopilotChat.nvim",
-    dependencies = {
-      { "github/copilot.vim" }, -- or zbirenbaum/copilot.lua
-      { "nvim-lua/plenary.nvim", branch = "master" },
-    },
-    build = "make tiktoken",
-    opts = {
-      model = "claude-sonnet-4",
-      chat_autocomplete = true,
-    },
-  },
+  -- {
+  --   "CopilotC-Nvim/CopilotChat.nvim",
+  --   dependencies = {
+  --     { "github/copilot.vim" }, -- or zbirenbaum/copilot.lua
+  --     { "nvim-lua/plenary.nvim", branch = "master" },
+  --   },
+  --   build = "make tiktoken",
+  --   opts = {
+  --     model = "claude-sonnet-4",
+  --     chat_autocomplete = true,
+  --   },
+  -- },
 }, {
   ui = {
     icons = {},
