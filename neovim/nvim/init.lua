@@ -80,7 +80,17 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
 -- Diagnostic keymaps
-vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
+vim.keymap.set("n", "<leader>q", function()
+	local diagnostics = vim.diagnostic.get()
+	if #diagnostics > 0 then
+		vim.diagnostic.setqflist()
+	else
+		vim.notify("No diagnostics found!", vim.log.levels.INFO)
+	end
+end, { desc = "Open diagnostic [Q]uickfix list" })
+
+-- Close Quickfix window
+vim.keymap.set("n", "<leader>qq", "<cmd>cclose<CR>", { desc = "[Q]uickfix [C]lose" })
 
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
 -- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
@@ -376,15 +386,6 @@ require("lazy").setup({
 					--  the definition of its *type*, not where it was *defined*.
 					map("grt", require("telescope.builtin").lsp_type_definitions, "[G]oto [T]ype Definition")
 
-					-- Selection formatting
-					map("<leader>f", function()
-						vim.lsp.buf.format()
-						vim.api.nvim_input("<ESC>")
-					end, "[F]ormat selection buffer", "v")
-
-					-- Whole file formatting
-					map("<leader>f", vim.lsp.buf.format, "[F]ormat whole buffer")
-
 					-- The following two autocommands are used to highlight references of the
 					-- word under your cursor when your cursor rests there for a little while.
 					--    See `:help CursorHold` for information about when this is executed
@@ -429,6 +430,11 @@ require("lazy").setup({
 						map("<leader>th", function()
 							vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = event.buf }))
 						end, "[T]oggle Inlay [H]ints")
+					end
+
+					-- Ruff LSP server can provide hover, but Pyright is better at it.
+					if client and client.name == "ruff" then
+						client.server_capabilities.hoverProvider = false
 					end
 				end,
 			})
@@ -482,6 +488,22 @@ require("lazy").setup({
 				rust_analyzer = {},
 
 				-- Python
+				pyright = {
+					settings = {
+						pyright = {
+							disableOrganizeImports = true,
+						},
+						python = {
+							analysis = {
+								typeCheckingMode = "standard",
+								diagnosticMode = "openFilesOnly",
+								autoSearchPaths = true,
+								useLibraryCodeForTypes = true,
+							},
+						},
+					},
+				},
+
 				ruff = {},
 
 				-- Lua
@@ -597,6 +619,33 @@ require("lazy").setup({
 				},
 			})
 		end,
+	},
+
+	-- Formatting
+	{
+		"stevearc/conform.nvim",
+		event = { "BufWritePre" },
+		cmd = { "ConformInfo" },
+		keys = {
+			{
+				"<leader>f",
+				function()
+					require("conform").format({ async = true, lsp_fallback = true })
+				end,
+				mode = "",
+				desc = "[F]ormat buffer",
+			},
+		},
+		opts = {
+			formatters_by_ft = {
+				python = { "ruff_organize_imports", "ruff_format" },
+				lua = { "stylua" },
+			},
+			format_on_save = {
+				timeout_ms = 500,
+				lsp_fallback = true,
+			},
+		},
 	},
 
 	{
