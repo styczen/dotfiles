@@ -492,6 +492,7 @@ require("lazy").setup({
 					settings = {
 						pyright = {
 							disableOrganizeImports = true,
+							disableTaggedHints = true,
 						},
 						python = {
 							analysis = {
@@ -499,12 +500,40 @@ require("lazy").setup({
 								diagnosticMode = "openFilesOnly",
 								autoSearchPaths = true,
 								useLibraryCodeForTypes = true,
+								diagnosticSeverityOverrides = {
+									reportUnusedVariable = "none",
+									reportUnusedImport = "none",
+									reportUndefinedVariable = "none",
+									reportUnusedClass = "none",
+									reportUnusedFunction = "none",
+									reportGeneralTypeIssues = "error",
+									reportReturnType = "error",
+									reportFunctionMemberAccess = "error",
+								},
 							},
 						},
 					},
 				},
 
-				ruff = {},
+				ruff = {
+					init_options = {
+						settings = {
+							configuration = {
+								lint = {
+									select = {
+										"E",
+										"F",
+										"UP",
+										"B",
+										"SIM",
+										"I",
+										"N",
+									},
+								},
+							},
+						},
+					},
+				},
 
 				-- Lua
 				lua_ls = {
