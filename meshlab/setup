@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+# Check if flatpak is installed
+if ! command -v flatpak &> /dev/null; then
+    echo "Error: flatpak is not installed."
+    echo "Please install flatpak first: https://flatpak.org/setup/"
+    exit 1
+fi
+
+flatpak install flathub net.meshlab.MeshLab
