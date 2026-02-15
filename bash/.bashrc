@@ -66,6 +66,8 @@ if ! shopt -oq posix; then
   fi
 fi
 
+export EDITOR=nvim
+
 ########## Local overrides ##########
 
 if [[ -f "$HOME/.bashrc.local.sh" ]]; then

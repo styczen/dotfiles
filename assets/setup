@@ -2,5 +2,7 @@
 
 mkdir -p $HOME/.local/share/backgrounds
 
-ln -sf $PWD/tim-mccartney-39907.jpg $HOME/.local/share/backgrounds/tim-mccartney-39907.jpg
-ln -sf $PWD/prison_mike.jpg $HOME/.local/share/backgrounds/prison_mike.jpg
+shopt -s nullglob
+for image in "$PWD"/*.{jpg,jpeg,png,webp,bmp,gif}; do
+  ln -sf "$image" "$HOME/.local/share/backgrounds/$(basename "$image")"
+done

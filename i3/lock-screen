@@ -2,11 +2,12 @@
 
 SCREEN_RESOLUTION="$(xdpyinfo | grep dimensions | cut -d' ' -f7)"
 BGCOLOR="#0F0F0F"
-image=$HOME/.local/share/backgrounds/prison_mike.jpg
+image=$HOME/.local/share/backgrounds/bliss.jpg
 convert "$image" \
   -resize "$SCREEN_RESOLUTION^" \
   -gravity center \
   -background "$BGCOLOR" \
   -extent "$SCREEN_RESOLUTION" \
+  -fill black -colorize 50% \
   RGB:- \
 | i3lock --raw "$SCREEN_RESOLUTION":rgb -c "$BGCOLOR" -i /dev/stdin

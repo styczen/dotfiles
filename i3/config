@@ -191,7 +191,7 @@ bar {
 bindsym $mod+m exec "monitor-layout"
 
 # Set wallpaper
-exec_always --no-startup-id feh --bg-fill "$HOME/.local/share/backgrounds/tim-mccartney-39907.jpg"
+exec_always --no-startup-id feh --bg-fill "$HOME/.local/share/backgrounds/bliss.jpg"
 
 # GNOME application to make screenshots - works better than Kazam
 bindsym Print exec --no-startup-id gnome-screenshot -i
