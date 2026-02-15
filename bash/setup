@@ -24,3 +24,5 @@ done
 
 ln -sfn "$PWD/.bashrc" "$HOME/.bashrc"
 ln -sfn "$PWD/.profile" "$HOME/.profile"
+
+touch $HOME/.bashrc.local.sh
