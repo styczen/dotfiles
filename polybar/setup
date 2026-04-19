@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+sudo apt-get install -y polybar
+
+mkdir -p $HOME/.config/polybar
+
+ln -sf $PWD/launch.sh $HOME/.config/polybar/launch.sh
+ln -sf $PWD/config.ini $HOME/.config/polybar/config.ini
