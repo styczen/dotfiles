@@ -1,5 +1,6 @@
 [user]
 	name = Bartlomiej Styczen
+	signingkey = ~/.ssh/id_ed25519.pub
 
 [include]
 	path = .gitconfig_personal
@@ -8,7 +9,7 @@
 	path = .gitconfig_work
 
 [core]
-    editor = nvim
+	editor = nvim
 
 [lfs "https://github.com/styczen/dotfiles.git/info/lfs"]
 	locksverify = false
@@ -18,5 +19,16 @@
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
+
 [alias]
 	lg = log --all --decorate --oneline --graph
+
+[credential]
+	helper = store
+
+[commit]
+	signoff = true
+	gpgsign = true
+
+[gpg]
+	format = ssh

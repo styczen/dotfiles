@@ -8,3 +8,10 @@ cp $PWD/.gitconfig_work $HOME/.gitconfig_work
 
 echo "Please modify email in .gitconfig_work file"
 
+# Signing is mandatory (commit.gpgsign = true), so the signing key must exist
+if [ ! -f "$HOME/.ssh/id_ed25519.pub" ]; then
+	ssh-keygen -t ed25519 -f "$HOME/.ssh/id_ed25519" -N "" -C "$(hostname)"
+	echo "Generated new ed25519 key — add the public key below to GitHub/GitLab:"
+	cat "$HOME/.ssh/id_ed25519.pub"
+fi
+
