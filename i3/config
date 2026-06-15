@@ -189,8 +189,8 @@ exec_always --no-startup-id feh --bg-fill "$HOME/.local/share/backgrounds/bliss.
 # GNOME application to make screenshots - works better than Kazam
 bindsym Print exec --no-startup-id gnome-screenshot -i
 
-# Picom
-exec_always --no-startup-id picom --config "$HOME/.config/picom/picom.conf"
+# # Picom
+# exec_always --no-startup-id picom --config "$HOME/.config/picom/picom.conf"
 
 # Remap CAPS to CTRL
 exec --no-startup-id setxkbmap -option ctrl:nocaps
