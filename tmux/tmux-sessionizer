@@ -11,16 +11,33 @@ if [[ -z $selected ]]; then
     exit 0
 fi
 
+session_dir() {
+    local d
+    d=$(tmux show-option -t "$1" -qv @sessionizer_path)
+    [[ -z $d ]] && d=$(tmux display-message -p -t "$1" '#{pane_current_path}')
+    printf '%s' "$d"
+}
+
+# Build a session name from the basename, prefixing parent directories only when
+# a same-named session already points at a different directory.
 selected_name=$(basename "$selected" | tr . _)
+path=$selected
+while tmux has-session -t="$selected_name" 2> /dev/null && [[ "$(session_dir "$selected_name")" != "$selected" ]]; do
+    [[ $path == "/" ]] && break
+    path=$(dirname "$path")
+    selected_name="$(basename "$path" | tr . _)_${selected_name}"
+done
+
 tmux_running=$(pgrep tmux)
 
 if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
-    tmux new-session -s $selected_name -c $selected
+    tmux new-session -s "$selected_name" -c "$selected" \; set-option @sessionizer_path "$selected"
     exit 0
 fi
 
-if ! tmux has-session -t=$selected_name 2> /dev/null; then
-    tmux new-session -ds $selected_name -c $selected
+if ! tmux has-session -t="$selected_name" 2> /dev/null; then
+    tmux new-session -ds "$selected_name" -c "$selected"
+    tmux set-option -t "$selected_name" @sessionizer_path "$selected"
 fi
 
-tmux switch-client -t $selected_name
+tmux switch-client -t "$selected_name"
