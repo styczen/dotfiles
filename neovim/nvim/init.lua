@@ -332,7 +332,14 @@ require("lazy").setup({
 			"WhoIsSethDaniel/mason-tool-installer.nvim",
 
 			-- Useful status updates for LSP.
-			{ "j-hui/fidget.nvim", opts = {} },
+			{
+				"j-hui/fidget.nvim",
+				opts = {
+					progress = {
+						ignore = { "rust_analyzer" },
+					},
+				},
+			},
 
 			-- -- Allows extra capabilities provided by blink.cmp
 			-- "saghen/blink.cmp",
@@ -490,8 +497,7 @@ require("lazy").setup({
 
 			-- Enable the following language servers
 			local servers = {
-				-- Rust
-				rust_analyzer = {},
+				-- Rust is handled by rustaceanvim
 
 				-- Python
 				pyright = {
@@ -758,6 +764,19 @@ require("lazy").setup({
 			model = "claude-sonnet-4",
 			chat_autocomplete = true,
 		},
+	},
+
+	{
+		"mrcjkb/rustaceanvim",
+		version = "^8",
+		lazy = false,
+		init = function()
+			vim.g.rustaceanvim = {
+				server = {
+					status_notify_level = false,
+				},
+			}
+		end,
 	},
 }, {
 	ui = {
