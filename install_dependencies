@@ -22,7 +22,8 @@ sudo apt-get update && sudo apt-get install -y \
     ffmpeg \
     pulseaudio \
     cmake \
-    cmake-qt-gui
+    cmake-qt-gui \
+    clang
 
 # NodeJS
 curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash -

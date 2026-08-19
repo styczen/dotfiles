@@ -1,8 +1,58 @@
 #!/usr/bin/env bash
 
-sudo apt-get install -y polybar
+# Ubuntu's polybar package lags upstream (e.g. 3.5.7 on 22.04, which predates
+# the "interface-type" network module option added in 3.6.0). Fetch a newer
+# release to build from source instead of hardcoding network interface names.
+
+sudo apt-get update && sudo apt-get install -y \
+  build-essential \
+  cmake \
+  cmake-data \
+  pkg-config \
+  libuv1-dev \
+  libcairo2-dev \
+  libxcb1-dev \
+  libxcb-util0-dev \
+  libxcb-randr0-dev \
+  libxcb-composite0-dev \
+  python3 \
+  python3-xcbgen \
+  xcb-proto \
+  libxcb-image0-dev \
+  libxcb-icccm4-dev \
+  libxcb-ewmh-dev \
+  python3-sphinx \
+  python3-packaging
+
+sudo apt-get install -y \
+  libxcb-cursor-dev \
+  libxcb-xrm-dev \
+  libxcb-xkb-dev \
+  libasound2-dev \
+  libpulse-dev \
+  i3-wm \
+  libjsoncpp-dev \
+  libmpdclient-dev \
+  libcurl4-openssl-dev \
+  libnl-genl-3-dev \
+  libiw-dev
+
+POLYBAR_DIR="$PWD"
+# No tag newer than 3.7.2 (Aug 2024) exists, but master (unchanged since Sep 2025)
+# has a fix for a missing "#include <cstdint>" in include/common.hpp that 3.7.2
+# lacks, which fails to build under GCC 15+ (e.g. Ubuntu 26.04). Pin to that commit.
+POLYBAR_COMMIT="f99e0b1c7a5b094f5a04b14101899d0cb4ece69d"
+
+cd /tmp
+rm -rf polybar-src
+git clone https://github.com/polybar/polybar.git polybar-src
+cd polybar-src
+git checkout "$POLYBAR_COMMIT"
+git submodule update --init --recursive
+./build.sh --auto --all-features --gcc --jobs
+
+cd "$POLYBAR_DIR"
 
 mkdir -p $HOME/.config/polybar
-
 ln -sf $PWD/launch.sh $HOME/.config/polybar/launch.sh
 ln -sf $PWD/config.ini $HOME/.config/polybar/config.ini
