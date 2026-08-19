@@ -739,6 +739,7 @@ require("lazy").setup({
 				"csv",
 				"toml",
 				"dockerfile",
+				"ini",
 			},
 			-- Autoinstall languages that are not installed
 			auto_install = true,
