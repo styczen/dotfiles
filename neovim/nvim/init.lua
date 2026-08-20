@@ -730,6 +730,7 @@ require("lazy").setup({
 				"typescript",
 				"gitcommit",
 				"gitignore",
+				"git_config",
 				"make",
 				-- 'bibtex',
 				"scss",
