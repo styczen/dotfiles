@@ -1,0 +1,10 @@
+[Unit]
+Description=Restore powermode CPU settings
+After=multi-user.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/powermode restore
+
+[Install]
+WantedBy=multi-user.target

@@ -1,3 +1,7 @@
 #!/usr/bin/env bash
 
-ln -sf $PWD/powermode $HOME/.local/bin/powermode
+sudo ln -sf $PWD/powermode /usr/local/bin/powermode
+
+sudo cp $PWD/powermode-restore.service /etc/systemd/system/.
+sudo systemctl daemon-reload
+sudo systemctl enable powermode-restore.service

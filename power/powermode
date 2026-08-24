@@ -2,6 +2,8 @@
 
 set -euo pipefail
 
+STATE_FILE=/etc/powermode-cpu
+
 usage() {
     cat <<EOF
 Usage:
@@ -9,6 +11,7 @@ Usage:
   powermode cpu powersave|balanced|performance
   powermode gpu intel|nvidia
   powermode status
+  powermode restore
 EOF
     exit 1
 }
@@ -30,6 +33,12 @@ set_cpu() {
 
     echo "cpu turbo -> $([[ $no_turbo == 1 ]] && echo disabled || echo enabled)"
     echo "$no_turbo" | sudo tee /sys/devices/system/cpu/intel_pstate/no_turbo >/dev/null
+
+    echo "$1" | sudo tee "$STATE_FILE" >/dev/null
+}
+
+restore() {
+    set_cpu "$(cat "$STATE_FILE" 2>/dev/null || echo powersave)"
 }
 
 set_gpu() {
@@ -76,6 +85,9 @@ case "$1" in
         ;;
     status)
         status
+        ;;
+    restore)
+        restore
         ;;
     *)
         usage
