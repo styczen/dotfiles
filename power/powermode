@@ -1,0 +1,83 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+usage() {
+    cat <<EOF
+Usage:
+  powermode powersave|performance
+  powermode cpu powersave|balanced|performance
+  powermode gpu intel|nvidia
+  powermode status
+EOF
+    exit 1
+}
+
+set_cpu() {
+    local governor epp no_turbo
+    case "$1" in
+        powersave)   governor=powersave epp=power no_turbo=1 ;;
+        balanced)    governor=powersave epp=balance_performance no_turbo=0 ;;
+        performance) governor=performance epp=performance no_turbo=0 ;;
+        *) usage ;;
+    esac
+
+    echo "cpu governor -> $governor"
+    sudo cpupower frequency-set -g "$governor" >/dev/null
+
+    echo "cpu epp -> $epp"
+    echo "$epp" | sudo tee /sys/devices/system/cpu/cpu*/cpufreq/energy_performance_preference >/dev/null
+
+    echo "cpu turbo -> $([[ $no_turbo == 1 ]] && echo disabled || echo enabled)"
+    echo "$no_turbo" | sudo tee /sys/devices/system/cpu/intel_pstate/no_turbo >/dev/null
+}
+
+set_gpu() {
+    case "$1" in
+        intel|nvidia) ;;
+        *) usage ;;
+    esac
+
+    local current_gpu
+    current_gpu=$(prime-select query)
+    if [[ "$current_gpu" != "$1" ]]; then
+        echo "gpu: $current_gpu -> $1 (log out to apply)"
+        sudo prime-select "$1"
+    else
+        echo "gpu: already $1"
+    fi
+}
+
+status() {
+    echo "gpu:      $(prime-select query)"
+    echo "governor: $(cpupower frequency-info -p | grep -oP 'governor "\K[^"]+')"
+    echo "epp:      $(cat /sys/devices/system/cpu/cpu0/cpufreq/energy_performance_preference)"
+    echo "turbo:    $([[ $(cat /sys/devices/system/cpu/intel_pstate/no_turbo) == 1 ]] && echo disabled || echo enabled)"
+}
+
+[[ $# -ge 1 ]] || usage
+
+case "$1" in
+    powersave)
+        set_cpu powersave
+        set_gpu intel
+        ;;
+    performance)
+        set_cpu performance
+        set_gpu nvidia
+        ;;
+    cpu)
+        [[ $# -eq 2 ]] || usage
+        set_cpu "$2"
+        ;;
+    gpu)
+        [[ $# -eq 2 ]] || usage
+        set_gpu "$2"
+        ;;
+    status)
+        status
+        ;;
+    *)
+        usage
+        ;;
+esac
