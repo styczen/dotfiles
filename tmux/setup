@@ -1,10 +1,22 @@
 #!/usr/bin/env bash
 
+set -e
+
 sudo apt-get install -y \
-    tmux \
     fzf
 
-git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+TMUX_VERSION="3.7b"
+TMUX_URL="https://github.com/tmux/tmux-builds/releases/download/v${TMUX_VERSION}/tmux-${TMUX_VERSION}-linux-x86_64.tar.gz"
+
+mkdir -p $HOME/.local/bin
+if [ "$($HOME/.local/bin/tmux -V 2>/dev/null)" != "tmux $TMUX_VERSION" ]; then
+    curl -sL "$TMUX_URL" | tar -xz -C $HOME/.local/bin tmux
+    chmod +x $HOME/.local/bin/tmux
+fi
+
+if [ ! -d ~/.tmux/plugins/tpm ]; then
+    git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+fi
 
 ln -sf $PWD/.tmux.conf $HOME/.tmux.conf
 ln -sf $PWD/tmux-sessionizer $HOME/.local/bin/tms
