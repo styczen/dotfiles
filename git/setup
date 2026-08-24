@@ -8,11 +8,6 @@ fi
 
 ln -sf $PWD/.gitconfig $HOME/.gitconfig
 
-# This copy is done on purpose, because I don't want to leak my work email
-cp $PWD/.gitconfig_work $HOME/.gitconfig_work
-
-echo "Please modify email in .gitconfig_work file"
-
 # Install git-lfs
 GIT_LFS_VERSION=3.7.1
 wget -q https://github.com/git-lfs/git-lfs/releases/download/v$GIT_LFS_VERSION/git-lfs-linux-amd64-v$GIT_LFS_VERSION.tar.gz
