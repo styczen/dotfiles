@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+rm -rf $HOME/.local/share/fonts/nerd_fonts_3270
+fc-cache -f

@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+sudo apt-get update && sudo apt-get install -y fonts-symbola
+
+# Setup NERD fonts
+echo "Setting up NERD fonts"
+FONTS_PATH=$HOME/.local/share/fonts/nerd_fonts_3270
+mkdir -p $FONTS_PATH
+wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.4.0/3270.zip
+unzip -o -d $FONTS_PATH -q 3270.zip
+rm 3270.zip
+fc-cache -f
