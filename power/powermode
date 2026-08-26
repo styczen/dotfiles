@@ -12,11 +12,23 @@ Usage:
   powermode gpu intel|nvidia
   powermode status
   powermode restore
+
+CPU options (governor / epp / turbo):
+  powersave   -> powersave   / power              / turbo disabled
+  balanced    -> powersave   / balance_performance / turbo enabled
+  performance -> performance / performance         / turbo enabled
+
+  governor: kernel policy for picking CPU frequency
+  epp:      intel_pstate hint on how aggressively to boost within that governor
+  turbo:    opportunistic boost above the CPU's base clock
 EOF
     exit 1
 }
 
 set_cpu() {
+    # governor: kernel policy for picking frequency (powersave = scale down when idle, performance = stay high)
+    # epp: intel_pstate hint on how aggressively to boost within that governor (power/balance_performance/performance)
+    # no_turbo: 1 disables opportunistic turbo boost above base clock, 0 allows it
     local governor epp no_turbo
     case "$1" in
         powersave)   governor=powersave epp=power no_turbo=1 ;;
