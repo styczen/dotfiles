@@ -29,13 +29,18 @@ set_cpu() {
     # governor: kernel policy for picking frequency (powersave = scale down when idle, performance = stay high)
     # epp: intel_pstate hint on how aggressively to boost within that governor (power/balance_performance/performance)
     # no_turbo: 1 disables opportunistic turbo boost above base clock, 0 allows it
-    local governor epp no_turbo
+    local governor epp no_turbo profile
     case "$1" in
-        powersave)   governor=powersave epp=power no_turbo=1 ;;
-        balanced)    governor=powersave epp=balance_performance no_turbo=0 ;;
-        performance) governor=performance epp=performance no_turbo=0 ;;
+        powersave)   governor=powersave epp=power no_turbo=1 profile=power-saver ;;
+        balanced)    governor=powersave epp=balance_performance no_turbo=0 profile=balanced ;;
+        performance) governor=performance epp=performance no_turbo=0 profile=performance ;;
         *) usage ;;
     esac
+
+    # power-profiles-daemon manages the same EPP sysfs knob and will override
+    # our manual write below if left on a different profile, so keep it in sync.
+    echo "power profile -> $profile"
+    powerprofilesctl set "$profile" >/dev/null
 
     echo "cpu governor -> $governor"
     sudo cpupower frequency-set -g "$governor" >/dev/null
