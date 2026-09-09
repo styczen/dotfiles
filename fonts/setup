@@ -4,9 +4,13 @@ sudo apt-get update && sudo apt-get install -y fonts-symbola
 
 # Setup NERD fonts
 echo "Setting up NERD fonts"
-FONTS_PATH=$HOME/.local/share/fonts/nerd_fonts_3270
+
+# DejaVu Sans Mono (patched with Nerd Font icon glyphs), used for
+# terminal/editor text as well as polybar's icon glyphs
+FONTS_PATH=$HOME/.local/share/fonts/nerd_fonts_dejavu
 mkdir -p $FONTS_PATH
-wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.4.0/3270.zip
-unzip -o -d $FONTS_PATH -q 3270.zip
-rm 3270.zip
+wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.4.0/DejaVuSansMono.zip
+unzip -o -d $FONTS_PATH -q DejaVuSansMono.zip
+rm DejaVuSansMono.zip
+
 fc-cache -f
