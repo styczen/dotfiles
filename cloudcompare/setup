@@ -12,9 +12,10 @@ sudo apt-get install -y \
     qttools5-dev \
     qttools5-dev-tools \
     libqt5websockets5-dev \
-    liblaszip-dev
+    liblaszip-dev \
+    libgdal-dev
 
-git clone --recursive --branch $VERSION https://github.com/cloudcompare/CloudCompare.git
+git clone --single-branch --depth 1 --recursive --shallow-submodules --branch $VERSION https://github.com/cloudcompare/CloudCompare.git
 
 # Download FBX SDK
 wget -O fbxsdk.tar.gz https://damassets.autodesk.net/content/dam/autodesk/www/files/fbx202037_fbxsdk_gcc_linux.tar.gz
@@ -39,5 +40,5 @@ cmake --build build --parallel
 cmake --install build
 popd
 
-rm -rf CloudCompare 
+rm -rf CloudCompare*
 rm -rf fbxsdk*
