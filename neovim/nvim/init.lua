@@ -569,6 +569,9 @@ require("lazy").setup({
 					cmd = { "clangd", "-j", clangd_num_cores },
 				},
 
+				-- C#
+				csharp_ls = {},
+
 				-- LaTeX
 				texlab = {
 					settings = {
@@ -586,9 +589,13 @@ require("lazy").setup({
 			}
 
 			-- Ensure the servers and tools above are installed
-			local ensure_installed = vim.tbl_keys(servers or {})
+			local ensure_installed = vim.tbl_filter(function(name)
+				return name ~= "csharp_ls"
+			end, vim.tbl_keys(servers or {}))
 			vim.list_extend(ensure_installed, {
 				"stylua", -- Used to format Lua code
+				-- Last release targeting .NET 8
+				{ "csharp-language-server", version = "0.16.0" },
 			})
 			require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
@@ -744,6 +751,7 @@ require("lazy").setup({
 				"toml",
 				"dockerfile",
 				"ini",
+				"c_sharp",
 			},
 			-- Autoinstall languages that are not installed
 			auto_install = true,
