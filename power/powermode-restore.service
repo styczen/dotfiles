@@ -1,6 +1,7 @@
 [Unit]
 Description=Restore powermode CPU settings
-After=multi-user.target
+After=multi-user.target power-profiles-daemon.service cpufrequtils.service
+Wants=power-profiles-daemon.service
 
 [Service]
 Type=oneshot
