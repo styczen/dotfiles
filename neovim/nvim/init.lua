@@ -333,6 +333,7 @@ require("lazy").setup({
 			{ "mason-org/mason.nvim", opts = {} },
 			"mason-org/mason-lspconfig.nvim",
 			"WhoIsSethDaniel/mason-tool-installer.nvim",
+			"Decodetalkers/csharpls-extended-lsp.nvim",
 
 			-- Useful status updates for LSP.
 			{
@@ -605,6 +606,9 @@ require("lazy").setup({
 			end
 
 			vim.lsp.enable(vim.tbl_keys(servers))
+
+			-- Decompiled sources for "go to definition" into external assemblies
+			require("csharpls_extended").buf_read_cmd_bind()
 
 			require("mason").setup()
 			require("mason-lspconfig").setup()
